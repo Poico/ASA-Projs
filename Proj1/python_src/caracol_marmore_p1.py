@@ -19,7 +19,7 @@ def valor_mais_macho(matriz : list, slabs : dict) -> int:
         for column in range(1,len(matriz[line])):
             # max de 1 até n peças
             #   peça  preço
-            prioq = PriorityQueue()
+            prioq = PriorityQueue() # para ir buscar o valor máximo em O(1)
             # valores que estão imediatamente ao lado
             prioq.put(matriz[line-1][column])
             prioq.put(matriz[line][column-1])
