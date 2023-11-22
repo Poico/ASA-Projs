@@ -11,23 +11,25 @@ def mostra_matriz(matriz : list) -> str:
     return out.rstrip() + "]"
 
 
-def valor_mais_macho(matriz : list, slabs : list) -> int: 
+def valor_mais_macho(matriz : list, slabs_values : list) -> int: 
     
-    res = 0
     #TODO: add variable for the len <- reduce time calculating
     
     for line in range(1,len(matriz)):
         for column in range(1,len(matriz[line])):
             # max de 1 até n peças
-            #   peça  preço
             minus_inf = -math.inf
             lst = []
-            # for k in range(1,line):
+            # get value calculated before for each possible cut (either in X or Y)
+            for k in range(1,line+1):
+                lst.append(matriz[line-k][column] + slabs_values[line][column])
+            for k in range(1, column+1):
+                lst.append(matriz[line][column-k] + slabs_values[line][column])
+            
+            
+            matriz[line][column] = max(lst)
 
-
-                
-
-    return res
+    return matriz[len(matriz)-1][len(matriz[0])-1]
 
 def main():
     """
@@ -52,13 +54,16 @@ def main():
     for _ in range(slabs_n):
         x, y, value = map(int, input().split()) # x e y são tamanhos e value é valor da peça x
         slabs_values[x][y] = value
-    
+        try:
+            slabs_values[y][x] = value
+        except IndexError:
+            pass
 
 
     # algoritmo para calcular valor máximo
     print(mostra_matriz(matriz), end="\n\n")
     print(mostra_matriz(slabs_values))
-    valor_mais_macho(matriz, slabs_values)
+    print(valor_mais_macho(matriz, slabs_values))
 
 
 
