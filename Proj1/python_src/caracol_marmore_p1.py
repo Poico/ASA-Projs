@@ -18,18 +18,25 @@ def valor_mais_macho(matriz : list, slabs_values : list) -> int:
     for line in range(1,len(matriz)):
         for column in range(1,len(matriz[line])):
             # max de 1 até n peças
-            minus_inf = -math.inf
+            #minus_inf = -math.inf
             lst = []
             # get value calculated before for each possible cut (either in X or Y)
             for k in range(1,line+1):
+                print(f"line:{line} column:{column} k:{k}", end="\n")
+                print(matriz[line-k][column], slabs_values[line][column], end="\n")
                 lst.append(matriz[line-k][column] + slabs_values[line][column])
             for k in range(1, column+1):
+                print(f"line:{line} column:{column} k:{k}", end="\n")
+                print(matriz[line][column-k], slabs_values[line][column], end="\n")
                 lst.append(matriz[line][column-k] + slabs_values[line][column])
             
             
             matriz[line][column] = max(lst)
 
     return matriz[len(matriz)-1][len(matriz[0])-1]
+
+
+    
 
 def main():
     """
@@ -61,10 +68,11 @@ def main():
 
 
     # algoritmo para calcular valor máximo
-    print(mostra_matriz(matriz), end="\n\n")
-    print(mostra_matriz(slabs_values))
+    
+    #print(mostra_matriz(slabs_values))
     print(valor_mais_macho(matriz, slabs_values))
 
+    print(mostra_matriz(matriz), end="\n\n")
 
 
 if __name__ == "__main__":
