@@ -42,4 +42,5 @@ def main():
     print(valor_mais_macho(matriz))
 
 
-
+if __name__ == "__main__":
+    main()
