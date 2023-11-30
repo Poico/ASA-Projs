@@ -55,12 +55,12 @@ int main() {
     }
 
     //print stuff
-    printf("ola\n");
-    for (int i = 0; i < rows; i++){
-        for (int j = 0; j < columns; j++)
-            printf("%2d ", marble[i][j]);
-        printf("\n");
-    }
+    // printf("ola\n");
+    // for (int i = 0; i < rows; i++){
+    //     for (int j = 0; j < columns; j++)
+    //         printf("%2d ", marble[i][j]);
+    //     printf("\n");
+    // }
 
     printf("%d\n", valor_mais_melhor_bom(marble, rows, columns));
 
