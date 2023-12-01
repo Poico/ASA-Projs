@@ -13,7 +13,7 @@ int valor_mais_melhor_bom(int ** matrix, int rows, int columns){
                 if (max < current_solution)
                     max = current_solution;
             }
-            // cuts on the marble in the other dimension
+            // cuts on the marble in another dimension :O
             for (int k = 1; k <= j; k++){
                 int current_solution = matrix[i][k] + matrix[i][j-k];
                 if (max < current_solution)
@@ -54,14 +54,7 @@ int main() {
             marble[y][x] = value;   
     }
 
-    //print stuff
-    // printf("ola\n");
-    // for (int i = 0; i < rows; i++){
-    //     for (int j = 0; j < columns; j++)
-    //         printf("%2d ", marble[i][j]);
-    //     printf("\n");
-    // }
-
+    // profits, profits, profits
     printf("%d\n", valor_mais_melhor_bom(marble, rows, columns));
 
     return 0;
