@@ -1,0 +1,901 @@
+tests_gen/teste_1000.txt
+
+real	0m0.635s
+user	0m0.626s
+sys	0m0.010s
+tests_gen/teste_1020.txt
+
+real	0m1.630s
+user	0m1.630s
+sys	0m0.000s
+tests_gen/teste_1040.txt
+
+real	0m0.724s
+user	0m0.724s
+sys	0m0.000s
+tests_gen/teste_1060.txt
+
+real	0m0.769s
+user	0m0.769s
+sys	0m0.000s
+tests_gen/teste_1080.txt
+
+real	0m0.818s
+user	0m0.818s
+sys	0m0.000s
+tests_gen/teste_1100.txt
+
+real	0m0.862s
+user	0m0.862s
+sys	0m0.000s
+tests_gen/teste_1120.txt
+
+real	0m0.911s
+user	0m0.911s
+sys	0m0.000s
+tests_gen/teste_1140.txt
+
+real	0m0.960s
+user	0m0.960s
+sys	0m0.000s
+tests_gen/teste_1160.txt
+
+real	0m1.038s
+user	0m1.028s
+sys	0m0.010s
+tests_gen/teste_1180.txt
+
+real	0m1.174s
+user	0m1.164s
+sys	0m0.010s
+tests_gen/teste_1200.txt
+
+real	0m1.163s
+user	0m1.163s
+sys	0m0.000s
+tests_gen/teste_1220.txt
+
+real	0m1.219s
+user	0m1.219s
+sys	0m0.000s
+tests_gen/teste_1240.txt
+
+real	0m1.306s
+user	0m1.306s
+sys	0m0.000s
+tests_gen/teste_1260.txt
+
+real	0m1.370s
+user	0m1.360s
+sys	0m0.010s
+tests_gen/teste_1280.txt
+
+real	0m1.474s
+user	0m1.474s
+sys	0m0.000s
+tests_gen/teste_1300.txt
+
+real	0m1.542s
+user	0m1.542s
+sys	0m0.000s
+tests_gen/teste_1320.txt
+
+real	0m1.660s
+user	0m1.660s
+sys	0m0.000s
+tests_gen/teste_1340.txt
+
+real	0m2.082s
+user	0m2.082s
+sys	0m0.000s
+tests_gen/teste_1360.txt
+
+real	0m1.852s
+user	0m1.842s
+sys	0m0.010s
+tests_gen/teste_1380.txt
+
+real	0m1.988s
+user	0m1.988s
+sys	0m0.000s
+tests_gen/teste_1400.txt
+
+real	0m2.079s
+user	0m2.079s
+sys	0m0.000s
+tests_gen/teste_1420.txt
+
+real	0m2.093s
+user	0m2.093s
+sys	0m0.000s
+tests_gen/teste_1440.txt
+
+real	0m2.422s
+user	0m2.402s
+sys	0m0.020s
+tests_gen/teste_1460.txt
+
+real	0m2.351s
+user	0m2.351s
+sys	0m0.000s
+tests_gen/teste_1480.txt
+
+real	0m2.809s
+user	0m2.809s
+sys	0m0.000s
+tests_gen/teste_1500.txt
+
+real	0m2.739s
+user	0m2.730s
+sys	0m0.010s
+tests_gen/teste_1520.txt
+
+real	0m2.813s
+user	0m2.803s
+sys	0m0.010s
+tests_gen/teste_1540.txt
+
+real	0m2.955s
+user	0m2.955s
+sys	0m0.000s
+tests_gen/teste_1560.txt
+
+real	0m3.230s
+user	0m3.220s
+sys	0m0.010s
+tests_gen/teste_1580.txt
+
+real	0m3.199s
+user	0m3.179s
+sys	0m0.020s
+tests_gen/teste_1600.txt
+
+real	0m3.632s
+user	0m3.622s
+sys	0m0.010s
+tests_gen/teste_1620.txt
+
+real	0m3.596s
+user	0m3.586s
+sys	0m0.010s
+tests_gen/teste_1640.txt
+
+real	0m3.840s
+user	0m3.840s
+sys	0m0.000s
+tests_gen/teste_1660.txt
+
+real	0m5.391s
+user	0m5.391s
+sys	0m0.000s
+tests_gen/teste_1680.txt
+
+real	0m4.629s
+user	0m4.629s
+sys	0m0.000s
+tests_gen/teste_1700.txt
+
+real	0m4.687s
+user	0m4.677s
+sys	0m0.010s
+tests_gen/teste_1720.txt
+
+real	0m5.062s
+user	0m5.052s
+sys	0m0.010s
+tests_gen/teste_1740.txt
+
+real	0m5.160s
+user	0m5.160s
+sys	0m0.000s
+tests_gen/teste_1760.txt
+
+real	0m5.984s
+user	0m5.974s
+sys	0m0.010s
+tests_gen/teste_1780.txt
+
+real	0m6.554s
+user	0m6.544s
+sys	0m0.010s
+tests_gen/teste_1800.txt
+
+real	0m6.436s
+user	0m6.436s
+sys	0m0.000s
+tests_gen/teste_1820.txt
+
+real	0m6.510s
+user	0m6.510s
+sys	0m0.000s
+tests_gen/teste_1840.txt
+
+real	0m7.095s
+user	0m7.095s
+sys	0m0.000s
+tests_gen/teste_1860.txt
+
+real	0m7.614s
+user	0m7.604s
+sys	0m0.010s
+tests_gen/teste_1880.txt
+
+real	0m9.919s
+user	0m9.899s
+sys	0m0.020s
+tests_gen/teste_1900.txt
+
+real	0m7.964s
+user	0m7.964s
+sys	0m0.000s
+tests_gen/teste_1920.txt
+
+real	0m8.848s
+user	0m8.838s
+sys	0m0.010s
+tests_gen/teste_1940.txt
+
+real	0m9.925s
+user	0m9.915s
+sys	0m0.010s
+tests_gen/teste_1960.txt
+
+real	0m9.925s
+user	0m9.925s
+sys	0m0.000s
+tests_gen/teste_1980.txt
+
+real	0m11.157s
+user	0m11.156s
+sys	0m0.000s
+tests_gen/teste_2000.txt
+
+real	0m11.322s
+user	0m11.302s
+sys	0m0.020s
+tests_gen/teste_2020.txt
+
+real	0m10.949s
+user	0m10.929s
+sys	0m0.020s
+tests_gen/teste_2040.txt
+
+real	0m12.169s
+user	0m12.148s
+sys	0m0.020s
+tests_gen/teste_2060.txt
+
+real	0m31.078s
+user	0m31.067s
+sys	0m0.010s
+tests_gen/teste_2080.txt
+
+real	0m14.319s
+user	0m14.309s
+sys	0m0.010s
+tests_gen/teste_2100.txt
+
+real	0m14.539s
+user	0m14.529s
+sys	0m0.010s
+tests_gen/teste_2120.txt
+
+real	0m15.731s
+user	0m15.720s
+sys	0m0.010s
+tests_gen/teste_2140.txt
+
+real	0m16.291s
+user	0m16.269s
+sys	0m0.020s
+tests_gen/teste_2160.txt
+
+real	0m18.059s
+user	0m18.059s
+sys	0m0.000s
+tests_gen/teste_2180.txt
+
+real	0m16.555s
+user	0m16.554s
+sys	0m0.000s
+tests_gen/teste_2200.txt
+
+real	0m20.931s
+user	0m20.909s
+sys	0m0.020s
+tests_gen/teste_2220.txt
+
+real	0m19.015s
+user	0m19.005s
+sys	0m0.010s
+tests_gen/teste_2240.txt
+
+real	0m23.331s
+user	0m23.320s
+sys	0m0.010s
+tests_gen/teste_2260.txt
+
+real	0m21.440s
+user	0m21.420s
+sys	0m0.020s
+tests_gen/teste_2280.txt
+
+real	0m23.668s
+user	0m23.638s
+sys	0m0.030s
+tests_gen/teste_2300.txt
+
+real	0m26.560s
+user	0m26.539s
+sys	0m0.020s
+tests_gen/teste_2320.txt
+
+real	0m25.745s
+user	0m25.725s
+sys	0m0.020s
+tests_gen/teste_2340.txt
+
+real	0m25.960s
+user	0m25.950s
+sys	0m0.010s
+tests_gen/teste_2360.txt
+
+real	0m36.846s
+user	0m36.846s
+sys	0m0.000s
+tests_gen/teste_2380.txt
+
+real	0m28.554s
+user	0m28.544s
+sys	0m0.010s
+tests_gen/teste_2400.txt
+
+real	0m31.985s
+user	0m31.974s
+sys	0m0.010s
+tests_gen/teste_2420.txt
+
+real	0m32.326s
+user	0m32.286s
+sys	0m0.040s
+tests_gen/teste_2440.txt
+
+real	0m33.974s
+user	0m33.963s
+sys	0m0.010s
+tests_gen/teste_2460.txt
+
+real	0m34.805s
+user	0m34.765s
+sys	0m0.040s
+tests_gen/teste_2480.txt
+
+real	0m36.365s
+user	0m36.322s
+sys	0m0.040s
+tests_gen/teste_2500.txt
+
+real	0m42.129s
+user	0m42.118s
+sys	0m0.010s
+tests_gen/teste_2520.txt
+
+real	0m39.231s
+user	0m39.211s
+sys	0m0.020s
+tests_gen/teste_2540.txt
+
+real	0m41.558s
+user	0m41.528s
+sys	0m0.030s
+tests_gen/teste_2560.txt
+
+real	0m42.409s
+user	0m42.399s
+sys	0m0.010s
+tests_gen/teste_2580.txt
+
+real	0m43.183s
+user	0m43.171s
+sys	0m0.010s
+tests_gen/teste_2600.txt
+
+real	0m47.086s
+user	0m47.065s
+sys	0m0.020s
+tests_gen/teste_2620.txt
+
+real	0m46.899s
+user	0m46.838s
+sys	0m0.060s
+tests_gen/teste_2640.txt
+
+real	0m37.328s
+user	0m37.317s
+sys	0m0.010s
+tests_gen/teste_2660.txt
+
+real	0m50.148s
+user	0m50.143s
+sys	0m0.000s
+tests_gen/teste_2680.txt
+
+real	0m53.021s
+user	0m53.000s
+sys	0m0.020s
+tests_gen/teste_2700.txt
+
+real	0m53.343s
+user	0m53.333s
+sys	0m0.010s
+tests_gen/teste_2720.txt
+
+real	1m3.529s
+user	1m3.518s
+sys	0m0.010s
+tests_gen/teste_2740.txt
+
+real	0m57.624s
+user	0m57.623s
+sys	0m0.000s
+tests_gen/teste_2760.txt
+
+real	1m1.390s
+user	1m1.377s
+sys	0m0.010s
+tests_gen/teste_2780.txt
+
+real	1m3.176s
+user	1m3.136s
+sys	0m0.040s
+tests_gen/teste_2800.txt
+
+real	1m5.374s
+user	1m5.373s
+sys	0m0.000s
+tests_gen/teste_2820.txt
+
+real	1m7.343s
+user	1m7.300s
+sys	0m0.040s
+tests_gen/teste_2840.txt
+
+real	1m9.735s
+user	1m9.714s
+sys	0m0.020s
+tests_gen/teste_2860.txt
+
+real	1m10.902s
+user	1m10.840s
+sys	0m0.060s
+tests_gen/teste_2880.txt
+
+real	0m58.849s
+user	0m58.829s
+sys	0m0.020s
+tests_gen/teste_2900.txt
+
+real	1m17.505s
+user	1m17.484s
+sys	0m0.020s
+tests_gen/teste_2920.txt
+
+real	1m19.547s
+user	1m19.476s
+sys	0m0.070s
+tests_gen/teste_2940.txt
+
+real	1m20.249s
+user	1m20.229s
+sys	0m0.020s
+tests_gen/teste_2960.txt
+
+real	1m27.246s
+user	1m27.205s
+sys	0m0.040s
+tests_gen/teste_2980.txt
+
+real	1m25.273s
+user	1m25.252s
+sys	0m0.020s
+tests_gen/teste_3000.txt
+
+real	1m30.035s
+user	1m29.984s
+sys	0m0.050s
+tests_gen/teste_3020.txt
+
+real	1m39.055s
+user	1m39.024s
+sys	0m0.030s
+tests_gen/teste_3040.txt
+
+real	1m36.068s
+user	1m36.047s
+sys	0m0.020s
+tests_gen/teste_3060.txt
+
+real	1m9.799s
+user	1m9.749s
+sys	0m0.050s
+tests_gen/teste_3080.txt
+
+real	1m45.805s
+user	1m45.743s
+sys	0m0.060s
+tests_gen/teste_3100.txt
+
+real	1m47.436s
+user	1m47.405s
+sys	0m0.030s
+tests_gen/teste_3120.txt
+
+real	1m55.820s
+user	1m55.779s
+sys	0m0.040s
+tests_gen/teste_3140.txt
+
+real	1m57.473s
+user	1m57.402s
+sys	0m0.070s
+tests_gen/teste_3160.txt
+
+real	1m57.983s
+user	1m57.952s
+sys	0m0.030s
+tests_gen/teste_3180.txt
+
+real	1m56.288s
+user	1m56.247s
+sys	0m0.040s
+tests_gen/teste_3200.txt
+
+real	1m24.402s
+user	1m24.362s
+sys	0m0.040s
+tests_gen/teste_3220.txt
+
+real	2m6.853s
+user	2m6.822s
+sys	0m0.030s
+tests_gen/teste_3240.txt
+
+real	2m8.871s
+user	2m8.780s
+sys	0m0.090s
+tests_gen/teste_3260.txt
+
+real	2m6.616s
+user	2m6.555s
+sys	0m0.060s
+tests_gen/teste_3280.txt
+
+real	2m14.107s
+user	2m14.086s
+sys	0m0.020s
+tests_gen/teste_3300.txt
+
+real	2m17.826s
+user	2m17.763s
+sys	0m0.060s
+tests_gen/teste_3320.txt
+
+real	1m38.017s
+user	1m38.016s
+sys	0m0.000s
+tests_gen/teste_3340.txt
+
+real	2m33.161s
+user	2m33.099s
+sys	0m0.060s
+tests_gen/teste_3360.txt
+
+real	2m27.369s
+user	2m27.338s
+sys	0m0.030s
+tests_gen/teste_3380.txt
+
+real	2m30.591s
+user	2m30.568s
+sys	0m0.020s
+tests_gen/teste_3400.txt
+
+real	2m34.095s
+user	2m34.024s
+sys	0m0.070s
+tests_gen/teste_3420.txt
+
+real	1m57.917s
+user	1m57.876s
+sys	0m0.040s
+tests_gen/teste_3440.txt
+
+real	2m42.951s
+user	2m42.940s
+sys	0m0.010s
+tests_gen/teste_3460.txt
+
+real	2m45.808s
+user	2m45.776s
+sys	0m0.030s
+tests_gen/teste_3480.txt
+
+real	2m51.868s
+user	2m51.837s
+sys	0m0.030s
+tests_gen/teste_3500.txt
+
+real	2m52.699s
+user	2m52.657s
+sys	0m0.040s
+tests_gen/teste_3520.txt
+
+real	2m3.749s
+user	2m3.734s
+sys	0m0.010s
+tests_gen/teste_3540.txt
+
+real	3m3.862s
+user	3m3.805s
+sys	0m0.050s
+tests_gen/teste_3560.txt
+
+real	3m20.230s
+user	3m20.179s
+sys	0m0.050s
+tests_gen/teste_3580.txt
+
+real	3m9.322s
+user	3m9.259s
+sys	0m0.060s
+tests_gen/teste_3600.txt
+
+real	2m30.069s
+user	2m30.014s
+sys	0m0.050s
+tests_gen/teste_3620.txt
+
+real	3m38.999s
+user	3m38.967s
+sys	0m0.030s
+tests_gen/teste_3640.txt
+
+real	3m58.827s
+user	3m58.745s
+sys	0m0.080s
+tests_gen/teste_3660.txt
+
+real	3m55.416s
+user	3m55.273s
+sys	0m0.140s
+tests_gen/teste_3680.txt
+
+real	4m5.919s
+user	4m5.816s
+sys	0m0.100s
+tests_gen/teste_3700.txt
+
+real	4m14.571s
+user	4m14.450s
+sys	0m0.110s
+tests_gen/teste_3720.txt
+
+real	4m8.404s
+user	4m8.261s
+sys	0m0.140s
+tests_gen/teste_3740.txt
+
+real	5m42.598s
+user	5m42.321s
+sys	0m0.260s
+tests_gen/teste_3760.txt
+
+real	6m5.156s
+user	6m4.978s
+sys	0m0.170s
+tests_gen/teste_3780.txt
+
+real	4m5.475s
+user	4m5.384s
+sys	0m0.091s
+tests_gen/teste_3800.txt
+
+real	6m54.711s
+user	6m54.512s
+sys	0m0.181s
+tests_gen/teste_3820.txt
+
+real	4m43.759s
+user	4m43.576s
+sys	0m0.180s
+tests_gen/teste_3840.txt
+
+real	7m14.580s
+user	7m14.332s
+sys	0m0.240s
+tests_gen/teste_3860.txt
+
+real	4m16.564s
+user	4m16.420s
+sys	0m0.140s
+tests_gen/teste_3880.txt
+
+real	5m6.899s
+user	5m6.746s
+sys	0m0.150s
+tests_gen/teste_3900.txt
+
+real	5m3.144s
+user	5m3.011s
+sys	0m0.130s
+tests_gen/teste_3920.txt
+
+real	3m23.537s
+user	3m23.507s
+sys	0m0.030s
+tests_gen/teste_3940.txt
+
+real	5m33.122s
+user	5m33.009s
+sys	0m0.110s
+tests_gen/teste_3960.txt
+
+real	4m50.507s
+user	4m50.324s
+sys	0m0.180s
+tests_gen/teste_3980.txt
+
+real	5m34.025s
+user	5m33.969s
+sys	0m0.050s
+tests_gen/teste_4000.txt
+
+real	5m59.148s
+user	5m59.044s
+sys	0m0.100s
+tests_gen/teste_4020.txt
+
+real	3m36.390s
+user	3m36.360s
+sys	0m0.030s
+tests_gen/teste_4040.txt
+
+real	5m57.141s
+user	5m56.936s
+sys	0m0.200s
+tests_gen/teste_4060.txt
+
+real	6m15.809s
+user	6m15.726s
+sys	0m0.080s
+tests_gen/teste_4080.txt
+
+real	6m13.196s
+user	6m13.102s
+sys	0m0.090s
+tests_gen/teste_4100.txt
+
+real	5m9.255s
+user	5m9.213s
+sys	0m0.040s
+tests_gen/teste_4120.txt
+
+real	6m25.525s
+user	6m25.376s
+sys	0m0.140s
+tests_gen/teste_4140.txt
+
+real	5m39.317s
+user	5m39.193s
+sys	0m0.120s
+tests_gen/teste_4160.txt
+
+real	6m44.837s
+user	6m44.733s
+sys	0m0.100s
+tests_gen/teste_4180.txt
+
+real	5m38.262s
+user	5m38.199s
+sys	0m0.060s
+tests_gen/teste_4200.txt
+
+real	6m58.898s
+user	6m58.743s
+sys	0m0.150s
+tests_gen/teste_4220.txt
+
+real	5m44.139s
+user	5m43.951s
+sys	0m0.180s
+tests_gen/teste_4240.txt
+
+real	7m18.804s
+user	7m18.705s
+sys	0m0.090s
+tests_gen/teste_4260.txt
+
+real	6m8.695s
+user	6m8.593s
+sys	0m0.100s
+tests_gen/teste_4280.txt
+
+real	7m31.481s
+user	7m31.386s
+sys	0m0.090s
+tests_gen/teste_4300.txt
+
+real	5m29.801s
+user	5m29.649s
+sys	0m0.150s
+tests_gen/teste_4320.txt
+
+real	7m46.987s
+user	7m46.850s
+sys	0m0.120s
+tests_gen/teste_4340.txt
+
+real	5m29.047s
+user	5m28.936s
+sys	0m0.110s
+tests_gen/teste_4360.txt
+
+real	8m5.091s
+user	8m4.985s
+sys	0m0.100s
+tests_gen/teste_4380.txt
+
+real	5m14.256s
+user	5m14.144s
+sys	0m0.110s
+tests_gen/teste_4400.txt
+
+real	8m40.499s
+user	8m40.363s
+sys	0m0.130s
+tests_gen/teste_4420.txt
+
+real	8m26.445s
+user	8m26.280s
+sys	0m0.160s
+tests_gen/teste_4440.txt
+
+real	6m6.059s
+user	6m5.875s
+sys	0m0.180s
+tests_gen/teste_4460.txt
+
+real	9m5.556s
+user	9m5.309s
+sys	0m0.240s
+tests_gen/teste_4480.txt
+
+real	6m8.457s
+user	6m8.403s
+sys	0m0.050s
+tests_gen/teste_4500.txt
+
+real	8m28.341s
+user	8m28.130s
+sys	0m0.200s
+tests_gen/teste_4520.txt
+
+real	9m43.833s
+user	9m43.563s
+sys	0m0.250s
+tests_gen/teste_4540.txt
+
+real	6m42.856s
+user	6m42.786s
+sys	0m0.070s
+tests_gen/teste_4560.txt
+
+real	10m58.962s
+user	10m58.741s
+sys	0m0.210s
+tests_gen/teste_4580.txt
+
+real	11m48.921s
+user	11m48.483s
+sys	0m0.420s
+tests_gen_left/teste_4600.txt

@@ -45,3 +45,5 @@ Cargo.lock
 *.exe
 *.out
 *.app
+
+tests_gen/
