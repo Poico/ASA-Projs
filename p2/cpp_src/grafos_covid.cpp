@@ -8,8 +8,21 @@ Objectivos:
 flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 */
 
+#include <vector>
+#include <stdio.h>
+using namespace std;
+
 int main(int argc, char const *argv[])
 {
+    int vertices, edges;
+    // read input
+    scanf("%d %d", vertices, edges);
+    
+    // construct input graph
+    vector<vector<int>> graph_input(vertices);
+    for (int i = 0; i < edges; i++) {
+        
+    }
     
     return 0;
 }
