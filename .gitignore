@@ -47,3 +47,4 @@ Cargo.lock
 *.app
 
 tests_gen/
+upload_git.sh
