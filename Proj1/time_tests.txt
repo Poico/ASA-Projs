@@ -899,3 +899,108 @@ real	11m48.921s
 user	11m48.483s
 sys	0m0.420s
 tests_gen_left/teste_4600.txt
+tests_gen_left/teste_4600.txt
+
+real	7m0.626s
+user	7m0.543s
+sys	0m0.080s
+tests_gen_left/teste_4620.txt
+
+real	9m13.282s
+user	9m13.177s
+sys	0m0.100s
+tests_gen_left/teste_4640.txt
+
+real	6m8.703s
+user	6m8.658s
+sys	0m0.040s
+tests_gen_left/teste_4660.txt
+
+real	8m15.743s
+user	8m15.670s
+sys	0m0.070s
+tests_gen_left/teste_4680.txt
+
+real	9m45.828s
+user	9m45.702s
+sys	0m0.100s
+tests_gen_left/teste_4700.txt
+
+real	6m36.209s
+user	6m36.166s
+sys	0m0.040s
+tests_gen_left/teste_4720.txt
+
+real	8m26.396s
+user	8m26.333s
+sys	0m0.060s
+tests_gen_left/teste_4740.txt
+
+real	9m49.679s
+user	9m49.563s
+sys	0m0.100s
+tests_gen_left/teste_4760.txt
+
+real	10m34.136s
+user	10m33.992s
+sys	0m0.130s
+tests_gen_left/teste_4780.txt
+
+real	6m45.017s
+user	6m44.987s
+sys	0m0.030s
+tests_gen_left/teste_4800.txt
+
+real	8m55.752s
+user	8m55.696s
+sys	0m0.050s
+tests_gen_left/teste_4820.txt
+
+real	10m5.290s
+user	10m5.138s
+sys	0m0.140s
+tests_gen_left/teste_4840.txt
+
+real	10m57.146s
+user	10m57.029s
+sys	0m0.110s
+tests_gen_left/teste_4860.txt
+
+real	7m12.844s
+user	7m12.814s
+sys	0m0.030s
+tests_gen_left/teste_4880.txt
+
+real	9m13.984s
+user	9m13.951s
+sys	0m0.030s
+tests_gen_left/teste_4900.txt
+
+real	10m23.369s
+user	10m23.225s
+sys	0m0.140s
+tests_gen_left/teste_4920.txt
+
+real	11m1.896s
+user	11m1.779s
+sys	0m0.100s
+tests_gen_left/teste_4940.txt
+
+real	11m26.807s
+user	11m26.692s
+sys	0m0.110s
+tests_gen_left/teste_4960.txt
+
+real	11m50.899s
+user	11m50.760s
+sys	0m0.120s
+tests_gen_left/teste_4980.txt
+
+real	12m16.148s
+user	12m16.002s
+sys	0m0.140s
+tests_gen_left/teste_5000.txt
+
+real	11m55.483s
+user	11m55.387s
+sys	0m0.090s
