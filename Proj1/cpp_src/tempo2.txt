@@ -1,0 +1,502 @@
+teste_0.txt
+
+real	0m0.007s
+user	0m0.002s
+sys	0m0.000s
+
+teste_10000.txt
+
+real	28m10.919s
+user	28m10.410s
+sys	0m0.337s
+
+teste_1000.txt
+
+real	0m0.617s
+user	0m0.613s
+sys	0m0.004s
+teste_100.txt
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
+teste_1100.txt
+
+real	0m0.835s
+user	0m0.832s
+sys	0m0.004s
+teste_1200.txt
+
+real	0m1.294s
+user	0m1.291s
+sys	0m0.004s
+teste_1300.txt
+
+real	0m1.596s
+user	0m1.592s
+sys	0m0.004s
+teste_1400.txt
+
+real	0m2.285s
+user	0m2.278s
+sys	0m0.007s
+teste_1500.txt
+
+real	0m2.516s
+user	0m2.506s
+sys	0m0.010s
+teste_1600.txt
+
+real	0m3.632s
+user	0m3.628s
+sys	0m0.004s
+teste_1700.txt
+
+real	0m4.068s
+user	0m4.061s
+sys	0m0.007s
+teste_1800.txt
+
+real	0m5.481s
+user	0m5.467s
+sys	0m0.014s
+teste_1900.txt
+
+real	0m5.795s
+user	0m5.788s
+sys	0m0.007s
+teste_2000.txt
+
+real	0m7.922s
+user	0m7.908s
+sys	0m0.014s
+teste_200.txt
+
+real	0m0.006s
+user	0m0.003s
+sys	0m0.003s
+teste_2100.txt
+
+real	0m8.867s
+user	0m8.856s
+sys	0m0.010s
+teste_2200.txt
+
+real	0m11.082s
+user	0m11.058s
+sys	0m0.024s
+teste_2300.txt
+
+real	0m19.493s
+user	0m19.472s
+sys	0m0.020s
+teste_2400.txt
+
+real	0m15.165s
+user	0m15.158s
+sys	0m0.007s
+teste_2500.txt
+
+real	0m15.784s
+user	0m15.764s
+sys	0m0.020s
+teste_2600.txt
+
+real	0m20.430s
+user	0m20.402s
+sys	0m0.027s
+teste_2700.txt
+
+real	0m20.020s
+user	0m20.003s
+sys	0m0.017s
+teste_2800.txt
+
+real	0m26.453s
+user	0m26.431s
+sys	0m0.020s
+teste_2900.txt
+
+real	0m32.911s
+user	0m32.880s
+sys	0m0.030s
+teste_3000.txt
+
+real	0m36.124s
+user	0m36.099s
+sys	0m0.024s
+teste_300.txt
+
+real	0m0.017s
+user	0m0.017s
+sys	0m0.000s
+teste_3100.txt
+
+real	0m35.436s
+user	0m35.408s
+sys	0m0.027s
+teste_3200.txt
+
+real	0m46.963s
+user	0m46.915s
+sys	0m0.047s
+teste_3300.txt
+
+real	0m47.869s
+user	0m47.814s
+sys	0m0.054s
+teste_3400.txt
+
+real	1m0.844s
+user	1m0.786s
+sys	0m0.057s
+teste_3500.txt
+
+real	0m59.845s
+user	0m59.797s
+sys	0m0.047s
+teste_3600.txt
+
+real	0m50.911s
+user	0m50.856s
+sys	0m0.037s
+teste_3700.txt
+
+real	1m16.815s
+user	1m16.742s
+sys	0m0.070s
+teste_3800.txt
+
+real	1m30.248s
+user	1m30.195s
+sys	0m0.050s
+teste_3900.txt
+
+real	1m28.584s
+user	1m28.511s
+sys	0m0.070s
+teste_4000.txt
+
+real	1m51.113s
+user	1m51.043s
+sys	0m0.067s
+teste_400.txt
+
+real	0m0.035s
+user	0m0.034s
+sys	0m0.000s
+teste_4100.txt
+
+real	2m16.885s
+user	2m16.815s
+sys	0m0.064s
+teste_4200.txt
+
+real	2m10.573s
+user	2m10.509s
+sys	0m0.060s
+teste_4300.txt
+
+real	2m12.576s
+user	2m12.477s
+sys	0m0.074s
+teste_4400.txt
+
+real	2m38.407s
+user	2m38.328s
+sys	0m0.074s
+teste_4500.txt
+
+real	1m56.812s
+user	1m56.697s
+sys	0m0.087s
+teste_4600.txt
+
+real	1m35.738s
+user	1m35.669s
+sys	0m0.050s
+teste_4700.txt
+
+real	3m8.544s
+user	3m8.421s
+sys	0m0.117s
+teste_4800.txt
+
+real	3m43.950s
+user	3m43.849s
+sys	0m0.094s
+teste_4900.txt
+
+real	3m49.213s
+user	3m49.140s
+sys	0m0.067s
+teste_5000.txt
+
+real	4m25.455s
+user	4m25.303s
+sys	0m0.140s
+teste_500.txt
+
+real	0m0.066s
+user	0m0.066s
+sys	0m0.000s
+teste_5100.txt
+
+real	2m7.036s
+user	2m6.915s
+sys	0m0.090s
+teste_5200.txt
+
+real	5m13.065s
+user	5m12.977s
+sys	0m0.077s
+teste_5300.txt
+
+real	5m9.927s
+user	5m9.763s
+sys	0m0.150s
+teste_5400.txt
+
+real	5m51.486s
+user	5m51.353s
+sys	0m0.123s
+teste_5500.txt
+
+real	3m46.257s
+user	3m46.166s
+sys	0m0.070s
+teste_5600.txt
+
+real	6m31.142s
+user	6m30.928s
+sys	0m0.153s
+teste_5700.txt
+
+real	6m52.577s
+user	6m52.436s
+sys	0m0.127s
+teste_5800.txt
+
+real	3m30.993s
+user	3m30.847s
+sys	0m0.110s
+teste_5900.txt
+
+real	7m46.721s
+user	7m46.519s
+sys	0m0.184s
+teste_6000.txt
+
+real	8m5.752s
+user	8m5.561s
+sys	0m0.160s
+teste_600.txt
+
+real	0m0.115s
+user	0m0.111s
+sys	0m0.004s
+teste_6100.txt
+
+real	3m20.803s
+user	3m20.729s
+sys	0m0.057s
+teste_6200.txt
+
+real	10m42.061s
+user	10m41.872s
+sys	0m0.167s
+teste_6300.txt
+
+real	6m7.670s
+user	6m7.456s
+sys	0m0.140s
+teste_6400.txt
+
+real	11m2.994s
+user	11m2.791s
+sys	0m0.184s
+teste_6500.txt
+
+real	7m23.616s
+user	7m23.358s
+sys	0m0.194s
+teste_6600.txt
+
+real	12m20.974s
+user	12m20.542s
+sys	0m0.320s
+teste_6700.txt
+
+real	6m28.538s
+user	6m28.303s
+sys	0m0.184s
+teste_6800.txt
+
+real	13m37.987s
+user	13m37.735s
+sys	0m0.220s
+teste_6900.txt
+
+real	5m59.958s
+user	5m59.753s
+sys	0m0.160s
+teste_7000.txt
+
+real	15m3.696s
+user	15m3.390s
+sys	0m0.260s
+teste_700.txt
+
+real	0m0.206s
+user	0m0.202s
+sys	0m0.004s
+teste_7100.txt
+
+real	5m46.390s
+user	5m46.280s
+sys	0m0.077s
+teste_7200.txt
+
+real	14m57.113s
+user	14m56.779s
+sys	0m0.237s
+teste_7300.txt
+
+real	5m38.506s
+user	5m38.380s
+sys	0m0.090s
+teste_7400.txt
+
+real	15m32.618s
+user	15m32.200s
+sys	0m0.324s
+teste_7500.txt
+
+real	18m16.134s
+user	18m15.761s
+sys	0m0.274s
+teste_7600.txt
+
+real	7m22.959s
+user	7m22.857s
+sys	0m0.070s
+teste_7700.txt
+
+real	14m47.881s
+user	14m47.512s
+sys	0m0.270s
+teste_7800.txt
+
+real	18m35.835s
+user	18m35.450s
+sys	0m0.254s
+teste_7900.txt
+
+real	19m8.789s
+user	19m8.387s
+sys	0m0.290s
+teste_8000.txt
+
+real	20m7.026s
+user	20m6.575s
+sys	0m0.330s
+teste_800.txt
+
+real	0m0.283s
+user	0m0.283s
+sys	0m0.000s
+teste_8100.txt
+
+real	19m12.550s
+user	19m11.989s
+sys	0m0.443s
+teste_8200.txt
+
+real	19m54.851s
+user	19m54.452s
+sys	0m0.280s
+teste_8300.txt
+
+real	19m7.626s
+user	19m7.218s
+sys	0m0.277s
+teste_8400.txt
+
+real	20m39.434s
+user	20m38.997s
+sys	0m0.290s
+teste_8500.txt
+
+real	19m8.179s
+user	19m7.782s
+sys	0m0.290s
+teste_8600.txt
+
+real	20m34.518s
+user	20m34.113s
+sys	0m0.294s
+teste_8700.txt
+
+real	11m35.324s
+user	11m35.237s
+sys	0m0.054s
+teste_8900.txt
+
+real	15m56.276s
+user	15m55.866s
+sys	0m0.304s
+teste_9000.txt
+
+real	20m15.300s
+user	20m14.893s
+sys	0m0.297s
+teste_900.txt
+
+real	0m0.424s
+user	0m0.417s
+sys	0m0.007s
+teste_9100.txt
+
+real	19m41.763s
+user	19m41.338s
+sys	0m0.317s
+teste_9200.txt
+
+real	21m0.306s
+user	20m59.881s
+sys	0m0.294s
+teste_9300.txt
+
+real	20m20.742s
+user	20m20.328s
+sys	0m0.290s
+teste_9400.txt
+
+real	22m27.055s
+user	22m26.643s
+sys	0m0.290s
+teste_9500.txt
+
+real	19m13.718s
+user	19m13.245s
+sys	0m0.367s
+teste_9600.txt
+
+real	22m16.878s
+user	22m16.421s
+sys	0m0.344s
+teste_9700.txt
+
+real	19m38.460s
+user	19m38.064s
+sys	0m0.294s
+teste_9800.txt
+
+real	23m42.142s
+user	23m41.658s
+sys	0m0.350s
+teste_9900.txt
+
+real	18m17.429s
+user	18m17.016s
+sys	0m0.290s
