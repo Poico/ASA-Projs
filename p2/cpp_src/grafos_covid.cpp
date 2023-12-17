@@ -19,24 +19,20 @@ using namespace std;
 #define NIL 0
 enum Colors { WHITE, GRAY, BLACK };
 
-void DFSvisitInputGraph(int vertice, int *time,
-                        stack<pair<int, int>> *st_secondDFS, enum Colors *color,
-                        int *end_time, int *parent);
+void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
+                        enum Colors *color);
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
-                             enum Colors *color, int *time, int *end_time);
-int DFSvisitSCCsGraph(vector<vector<int>> graph_sccs, int vertice,
+                             enum Colors *color);
+int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
                       enum Colors *color, int SCC_num);
 
 void addEdge();
-int dfsIterative(int start);
-void printGraph(vector<vector<int>> graph, int vertices);
-void printGraphMatrix(vector<vector<int>> graph);
 void resetColors(enum Colors *color);
 
 // global vars. to make things easier for the project
 int vertices, edges;
-vector<vector<int>> graph_input;
-vector<vector<int>> graph_transposed;
+vector<vector<bool>> graph_input;
+vector<vector<bool>> graph_transposed;
 
 int main(int argc, char const *argv[]) {
   // read first input
@@ -58,33 +54,24 @@ int main(int argc, char const *argv[]) {
 
   // vectors for DFSs
   enum Colors color[vertices + 1];
-  int end_time[vertices + 1];
-  int parent[vertices + 1];
   int SCCs[vertices + 1];
   stack<pair<int, int>> st_secondDFS;
 
   // init vectores that need inits
   for (int i = 1; i <= vertices; i++) {
     color[i] = WHITE;
-    parent[i] = NIL;
-    end_time[i] = __INT_MAX__;
-    // printf("for vertice %d: parent - %d, color - %d\n", i, parent[i],
-    // color[i]);
   }
 
   // perform first DFS
-  int time = 0;
   for (int u = 1; u <= vertices; u++) {
     if (color[u] == WHITE) {
-      // printf("DFS no vertice %d\n", u);
-      DFSvisitInputGraph(u, &time, &st_secondDFS, color, end_time, parent);
+      DFSvisitInputGraph(u, &st_secondDFS, color);
       // to insert the nodes for the next DFS correctly
     }
   }
 
   // second DFS to identify SCCs
   int SCC_num = 1;
-  time = 0;
   resetColors(color);
 
   while (!st_secondDFS.empty()) {
@@ -92,17 +79,13 @@ int main(int argc, char const *argv[]) {
     int u = p.first;
     st_secondDFS.pop();
     if (color[u] == WHITE) {
-      DFSvisitTransposedGraph(u, SCC_num, SCCs, color, &time, end_time);
+      DFSvisitTransposedGraph(u, SCC_num, SCCs, color);
       ++SCC_num;
     }
   }
 
-  // for (int i = 1; i <= vertices; i++) {
-  //   printf("for vertice %d: SCC_id - %d, end_time - %d\n", i, SCCs[i], end_time[i]);
-  // }
-
   // init SCCs graph
-  vector<vector<int>> graph_sccs;
+  vector<vector<bool>> graph_sccs;
   graph_sccs.resize(SCC_num + 1);
   for (int i = 1; i <= SCC_num; i++) {
     graph_sccs[i].resize(SCC_num);
@@ -116,30 +99,25 @@ int main(int argc, char const *argv[]) {
     }
   }
 
-  // printGraph(graph_sccs, SCC_num);
-
   // final DFS
   resetColors(color);
   int longest = 0;
   int latest = 0;
   for (int u = 1; u <= SCC_num; u++) {
     if (color[u] == WHITE) {
-      latest =
-          DFSvisitSCCsGraph(graph_sccs, u, color, SCC_num); // TODO: Verify this
+      latest = DFSvisitSCCsGraph(graph_sccs, u, color, SCC_num);
       longest = max<int>(longest, latest);
     }
   }
-  
+
   printf("%d\n", longest);
 
   return 0;
 }
 
-void DFSvisitInputGraph(int vertice, int *time,
-                        stack<pair<int, int>> *st_secondDFS, enum Colors *color,
-                        int *end_time, int *parent) {
+void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
+                        enum Colors *color) {
   // we use a stack to replace recursive approach
-  ++(*time);
   // pair of vertice u and vertice where we left off on the DFSvisit of u
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, 0);
@@ -157,8 +135,6 @@ void DFSvisitInputGraph(int vertice, int *time,
       if (graph_input[u][st.top().second] != 0 &&
           color[st.top().second] == WHITE) {
         color[st.top().second] = GRAY;
-        ++(*time);
-        parent[st.top().second] = u;
         st.push(make_pair(st.top().second, 0));
 
         break; // after we add it to the stack, we break from here, to look at
@@ -167,22 +143,16 @@ void DFSvisitInputGraph(int vertice, int *time,
     }
     // after i visited everyone, we close this vertice
     if (st.top().second == vertices) {
-      ++(*time);
       color[u] = BLACK;
-      end_time[u] = *time;
-      // printf("fechei o vertice %d com tempo de fim %d e predecessor %d\n", u,
-      //  end_time[u], parent[u]);
       st_secondDFS->push(make_pair(u, 0));
       st.pop(); // finished verifying current node, so we take it out
     }
   }
-  // printf("acabei de fazer a árvore de %d\n", vertice);
 }
 
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
-                             enum Colors *color, int *time, int *end_time) {
+                             enum Colors *color) {
   // pair of vertice u and vertice where we left off on the DFSvisit of u
-  ++(*time);
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, 0);
   st.push(initial);
@@ -198,7 +168,6 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
       if (graph_transposed[u][st.top().second] != 0 &&
           color[st.top().second] == WHITE) {
         color[st.top().second] = GRAY;
-        ++(*time);
         st.push(make_pair(st.top().second, 0));
 
         break; // after we add it to the stack, we break from here, to look at
@@ -207,9 +176,7 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
     }
     // after i visited everyone, we close this vertice
     if (st.top().second == vertices) {
-      ++(*time);
       color[u] = BLACK;
-      end_time[u] = *time;
       SCCs[u] = SCC_num;
       st.pop(); // finished verifying current node, so we take it out
     }
@@ -224,9 +191,7 @@ void addEdge() {
   graph_transposed[v][u] = 1;
 }
 
-// bora lá. tá quase
-
-int DFSvisitSCCsGraph(vector<vector<int>> graph_sccs, int vertice,
+int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
                       enum Colors *color, int SCC_num) {
   int mais_maior = 0;
   int current_depth = 0;
@@ -247,7 +212,7 @@ int DFSvisitSCCsGraph(vector<vector<int>> graph_sccs, int vertice,
       ++st.top().second;
       if (graph_sccs[u][st.top().second] != 0 &&
           color[st.top().second] == WHITE) {
-        
+
         color[st.top().second] = GRAY;
         st.push(make_pair(st.top().second, 0));
         ++current_depth;
@@ -264,61 +229,6 @@ int DFSvisitSCCsGraph(vector<vector<int>> graph_sccs, int vertice,
     }
   }
   return mais_maior;
-}
-
-int longestPath = 0;
-
-int dfsIterative(int start) {
-  stack<pair<int, int>> st;
-  st.push({start, 0});
-  bool visited[vertices + 1];
-  visited[start] = true;
-
-  while (!st.empty()) {
-    int current = st.top().first;
-    int pathLength = st.top().second;
-    st.pop();
-
-    // Update the longest path if necessary
-    longestPath = max(longestPath, pathLength);
-    // Visit all the adjacent nodes of the current node
-    for (int v = 1; v <= vertices; ++v) {
-      for (int v = 1; v <= vertices; ++v) {
-        if (graph_input[current][v] != 0 && !visited[v]) {
-          st.push({v, pathLength + 1});
-          visited[v] = true;
-        }
-      }
-    }
-  }
-  return longestPath;
-}
-
-// debug coisos
-
-// pretty print
-void printGraph(vector<vector<int>> graph, int vertices) {
-  for (int u = 1; u <= vertices; u++) {
-    for (int v = 1; v <= vertices; v++) {
-      if (graph[u][v] != 0)
-        printf("%d connects to %d\n", u, v);
-    }
-  }
-}
-
-void printGraphMatrix(vector<vector<int>> graph) {
-  printf("[");
-  for (int u = 1; u <= vertices; u++) {
-    for (int v = 1; v <= vertices; v++) {
-      if (v == vertices)
-        printf("%d", graph[u][v]);
-      else
-        printf("%d, ", graph[u][v]);
-    }
-    if (u != vertices)
-      printf("\n");
-  }
-  printf("]\n");
 }
 
 void resetColors(enum Colors *color) {
