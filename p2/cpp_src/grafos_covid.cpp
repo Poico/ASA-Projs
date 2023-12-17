@@ -24,6 +24,8 @@ void DFSvisitInputGraph(int vertice, int *time,
                         int *end_time, int *parent);
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
                              enum Colors *color, int *time, int *end_time);
+int DFSvisitSCCsGraph(vector<vector<int>> graph_sccs, int vertice,
+                      enum Colors *color, int SCC_num);
 
 void addEdge();
 int dfsIterative(int start);
@@ -95,29 +97,40 @@ int main(int argc, char const *argv[]) {
     }
   }
 
+  // for (int i = 1; i <= vertices; i++) {
+  //   printf("for vertice %d: SCC_id - %d, end_time - %d\n", i, SCCs[i], end_time[i]);
+  // }
+
   // init SCCs graph
   vector<vector<int>> graph_sccs;
-  graph_sccs.resize(SCC_num+1);
+  graph_sccs.resize(SCC_num + 1);
   for (int i = 1; i <= SCC_num; i++) {
     graph_sccs[i].resize(SCC_num);
   }
   // create edges for the graph
-  for (int i = 1; i <=vertices; i++) {
-    for (int j = 1; j <= vertices; j++){
-      if (graph_input[i][j] != 0 && graph_sccs[SCCs[i]][SCCs[j]] == 0 && SCCs[i] != SCCs[j])
+  for (int i = 1; i <= vertices; i++) {
+    for (int j = 1; j <= vertices; j++) {
+      if (graph_input[i][j] != 0 && graph_sccs[SCCs[i]][SCCs[j]] == 0 &&
+          SCCs[i] != SCCs[j])
         graph_sccs[SCCs[i]][SCCs[j]] = 1;
     }
   }
 
-  printGraph(graph_sccs, SCC_num);
+  // printGraph(graph_sccs, SCC_num);
 
   // final DFS
   resetColors(color);
-  for (int u = 1; u <= vertices; u++) {
+  int longest = 0;
+  int latest = 0;
+  for (int u = 1; u <= SCC_num; u++) {
     if (color[u] == WHITE) {
+      latest =
+          DFSvisitSCCsGraph(graph_sccs, u, color, SCC_num); // TODO: Verify this
+      longest = max<int>(longest, latest);
     }
   }
-  // printf("Longest path: %d\n", dfsIterative(1));
+  
+  printf("%d\n", longest);
 
   return 0;
 }
@@ -130,7 +143,6 @@ void DFSvisitInputGraph(int vertice, int *time,
   // pair of vertice u and vertice where we left off on the DFSvisit of u
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, 0);
-  // initial.first = vertice; initial.second = 0;
   st.push(initial);
   color[vertice] = GRAY;
 
@@ -159,7 +171,7 @@ void DFSvisitInputGraph(int vertice, int *time,
       color[u] = BLACK;
       end_time[u] = *time;
       // printf("fechei o vertice %d com tempo de fim %d e predecessor %d\n", u,
-            //  end_time[u], parent[u]);
+      //  end_time[u], parent[u]);
       st_secondDFS->push(make_pair(u, 0));
       st.pop(); // finished verifying current node, so we take it out
     }
@@ -210,6 +222,48 @@ void addEdge() {
   scanf("%d %d", &u, &v);
   graph_input[u][v] = 1;
   graph_transposed[v][u] = 1;
+}
+
+// bora lá. tá quase
+
+int DFSvisitSCCsGraph(vector<vector<int>> graph_sccs, int vertice,
+                      enum Colors *color, int SCC_num) {
+  int mais_maior = 0;
+  int current_depth = 0;
+
+  // tirar ferramentas da caixa
+  stack<pair<int, int>> st;
+  pair<int, int> initial(vertice, 0);
+  st.push(initial);
+  color[vertice] = GRAY;
+
+  while (!st.empty()) {
+    // get vertice
+    pair<int, int> p = st.top();
+    int u = p.first;
+
+    // visit adjacents, if there's one yet unexplored, we go through it next
+    while (st.top().second < SCC_num) {
+      ++st.top().second;
+      if (graph_sccs[u][st.top().second] != 0 &&
+          color[st.top().second] == WHITE) {
+        
+        color[st.top().second] = GRAY;
+        st.push(make_pair(st.top().second, 0));
+        ++current_depth;
+        mais_maior = max<int>(mais_maior, current_depth);
+        break; // after we add it to the stack, we break from here, to look at
+               // the added node
+      }
+    }
+    // after i visited everyone, we close this vertice
+    if (st.top().second == SCC_num) {
+      color[u] = BLACK;
+      st.pop(); // finished verifying current node, so we take it out
+      --current_depth;
+    }
+  }
+  return mais_maior;
 }
 
 int longestPath = 0;
