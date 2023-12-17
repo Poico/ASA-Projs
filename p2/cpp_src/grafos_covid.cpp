@@ -12,6 +12,8 @@ flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 #include <stack>
 #include <stdio.h>
 #include <vector>
+#include <utility>
+#include <tuple>
 using namespace std;
 
 #define NIL 0
@@ -23,12 +25,12 @@ void addEdge();
 int dfsIterative(int start);
 void printGraph(vector<vector<int>> graph);
 void printGraphMatrix(vector<vector<int>> graph);
+void push_vertice(stack<pair<int, int>> *st, int vertice);
 
 // global vars. to make things easier for the project
 int vertices, edges;
 vector<vector<int>> graph_input;
 vector<vector<int>> graph_transposed;
-vector<bool> all_visited;
 
 int main(int argc, char const *argv[]) {
   // read first input
@@ -55,6 +57,7 @@ int main(int argc, char const *argv[]) {
   // int SCC[vertices + 1];
   stack<pair<int, int>> st_secondDFS;
 
+
   // init vectores that need inits
   for (int i = 1; i <= vertices; i++) {
     color[i] = WHITE;
@@ -68,12 +71,17 @@ int main(int argc, char const *argv[]) {
   int time = 0;
   for (int u = 1; u <= vertices; u++) {
     if (color[u] == WHITE) {
+      printf("DFS no vertice %d\n", u);
       DFSvisitInputGraph(u, &time, &st_secondDFS, color, end_time, parent);
       // to insert the nodes for the next DFS correctly
     }
   }
 
-  printf("Longest path: %d\n", dfsIterative(1));
+  for (int i = 1; i <= vertices; i++) {
+    printf("for vertice %d: parent - %d, tempo de fim - %d\n", i, parent[i], end_time[i]);
+  }
+  
+  // printf("Longest path: %d\n", dfsIterative(1));
 
   return 0;
 }
@@ -82,49 +90,42 @@ void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_second
                         enum Colors *color, int *end_time, int *parent) {
   // we use a stack to replace recursive approach
   ++(*time);
+  // pair of vertice u and vertice where we left off on the DFSvisit of u
   stack<pair<int, int>> st;
-  pair<int, int> initial;
-  initial.first = vertice; initial.second = 1;
+  pair<int, int> initial(vertice, 0);
+  // initial.first = vertice; initial.second = 0;
   st.push(initial);
+  color[vertice] = GRAY;
 
   while (!st.empty()) {
-    int u = st.top().first; // read egdes from u
-    bool no_more_visits = true;
-    // closing current vertice "u"
-    if (color[u] == BLACK) {
-      ++(*time);
-      end_time[u] = *time;
+    // int u = st.top().first dá seg fault :'(
+    pair<int, int> p = st.top();
+    int u = p.first;
 
-      pair<int, int> p;
-      p.first = u;
-      p.second = 1;
-      st_secondDFS->push(p);
-      st.pop(); // finished verifying current node, so we take it out
-
-      continue;
-    }
-
-    color[u] = GRAY;
-    // visit adjacentes, if there's one yet unexplored, we go through it next
-    for (int v = 1; v <= vertices; v++) {
-      if (graph_input[u][v] != 0 && color[v] == WHITE) {
-        parent[v] = u;
-        printf("parent of %d is %d\n", v, u);
+    // visit adjacents, if there's one yet unexplored, we go through it next
+    while (st.top().second < vertices) {
+      ++st.top().second;
+      if (graph_input[u][st.top().second] != 0 && color[st.top().second] == WHITE){
+        color[st.top().second] = GRAY;
         ++(*time);
-        st.push(v); // we push the adjacentes to the stack
-        all_visited[v] = false;
-        break;
+        parent[st.top().second] = u;
+        st.push(make_pair(st.top().second, 0));
+        
+        break; // after we add it to the stack, we break from here, to look at the added node
       }
+      
     }
-
-    while (st.top().second <= vertices) {
-      v = st.top();
-      if (graph_input[u][v] != 0 && color[v] == WHITE){
-
-      }
+    // after i visited everyone, we close this vertice
+    if (st.top().second == vertices) {
+      ++(*time);
+      color[u] = BLACK;
+      end_time[u] = *time;
+      printf("fechei o vertice %d com tempo de fim %d e predecessor %d\n", u, end_time[u], parent[u]);
+      st_secondDFS->push(make_pair(u, 0));
+      st.pop(); // finished verifying current node, so we take it out
     }
-    
   }
+  printf("acabei de fazer a árvore de %d\n", vertice);
 }
 
 void addEdge() {

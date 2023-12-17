@@ -1,0 +1,24 @@
+DFS no vertice 1
+fechei o vertice 1 com tempo de fim 2 e predecessor 0
+acabei de fazer a árvore de 1
+DFS no vertice 2
+fechei o vertice 8 com tempo de fim 7 e predecessor 7
+fechei o vertice 7 com tempo de fim 8 e predecessor 5
+fechei o vertice 5 com tempo de fim 9 e predecessor 2
+fechei o vertice 2 com tempo de fim 10 e predecessor 0
+acabei de fazer a árvore de 2
+DFS no vertice 3
+fechei o vertice 3 com tempo de fim 12 e predecessor 0
+acabei de fazer a árvore de 3
+DFS no vertice 4
+fechei o vertice 6 com tempo de fim 15 e predecessor 4
+fechei o vertice 4 com tempo de fim 16 e predecessor 0
+acabei de fazer a árvore de 4
+for vertice 1: parent - 0, tempo de fim - 2
+for vertice 2: parent - 0, tempo de fim - 10
+for vertice 3: parent - 0, tempo de fim - 12
+for vertice 4: parent - 0, tempo de fim - 16
+for vertice 5: parent - 2, tempo de fim - 9
+for vertice 6: parent - 4, tempo de fim - 15
+for vertice 7: parent - 5, tempo de fim - 8
+for vertice 8: parent - 7, tempo de fim - 7
