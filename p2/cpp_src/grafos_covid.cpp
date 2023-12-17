@@ -24,8 +24,6 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
                              char *color);
 int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
                       char *color, int SCC_num);
-
-void addEdge();
 void resetColors(char *color);
 
 // global vars. to make things easier for the project
@@ -48,7 +46,11 @@ int main(int argc, char const *argv[]) {
 
   // quem tem a possibilidade de infectar outros, ou seja, read edges
   for (int i = 0; i < edges; i++) {
-    addEdge();
+    // an edge that goes form u to v (u->v)
+    int u, v;
+    scanf("%d %d", &u, &v);
+    graph_input[u][v] = 1;
+    graph_transposed[v][u] = 1;
   }
 
   // vectors for DFSs
@@ -183,13 +185,7 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
   }
 }
 
-void addEdge() {
-  // an edge that goes form u to v (u->v)
-  int u, v;
-  scanf("%d %d", &u, &v);
-  graph_input[u][v] = 1;
-  graph_transposed[v][u] = 1;
-}
+
 
 int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
                       char *color, int SCC_num) {
