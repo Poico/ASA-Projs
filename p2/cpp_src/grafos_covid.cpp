@@ -25,7 +25,7 @@ void addEdge();
 int dfsIterative(int start);
 void printGraph(vector<vector<int>> graph);
 void printGraphMatrix(vector<vector<int>> graph);
-void push_vertice(stack<pair<int, int>> *st, int vertice);
+void resetColors(enum Colors *color);
 
 // global vars. to make things easier for the project
 int vertices, edges;
@@ -54,7 +54,7 @@ int main(int argc, char const *argv[]) {
   enum Colors color[vertices + 1];
   int end_time[vertices + 1];
   int parent[vertices + 1];
-  // int SCC[vertices + 1];
+  int SCCs[vertices + 1];
   stack<pair<int, int>> st_secondDFS;
 
 
@@ -67,7 +67,7 @@ int main(int argc, char const *argv[]) {
     // color[i]);
   }
 
-  // // perform DFS from each
+  // perform first DFS
   int time = 0;
   for (int u = 1; u <= vertices; u++) {
     if (color[u] == WHITE) {
@@ -77,9 +77,22 @@ int main(int argc, char const *argv[]) {
     }
   }
 
-  for (int i = 1; i <= vertices; i++) {
-    printf("for vertice %d: parent - %d, tempo de fim - %d\n", i, parent[i], end_time[i]);
+  // second DFS to identify SCCs
+  int SCC_num = 1;
+  resetColors(color);
+  while (!st_secondDFS.empty()) {
+    pair<int, int> p = st_secondDFS.top();
+    int u = p.first;
+    if (color[u] == WHITE)
+      DFSvisitTransposedGraph(u, SCCs, color);
   }
+  
+
+
+  // for (int i = 1; i <= vertices; i++) {
+  //   printf("for vertice %d: parent - %d, tempo de fim - %d\n", i, parent[i], end_time[i]);
+  // }
+  
   
   // printf("Longest path: %d\n", dfsIterative(1));
 
@@ -127,6 +140,8 @@ void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_second
   }
   printf("acabei de fazer a árvore de %d\n", vertice);
 }
+
+void DFSvisitTransposedGraph(int vertice, )
 
 void addEdge() {
   // an edge that goes form u to v (u->v)
@@ -189,4 +204,10 @@ void printGraphMatrix(vector<vector<int>> graph) {
       printf("\n");
   }
   printf("]\n");
+}
+
+void resetColors(enum Colors *color){
+  for (int i = 1; i <= vertices; i++) {
+    color[i] = WHITE;
+  }
 }

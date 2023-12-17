@@ -22,3 +22,11 @@ for vertice 5: parent - 2, tempo de fim - 9
 for vertice 6: parent - 4, tempo de fim - 15
 for vertice 7: parent - 5, tempo de fim - 8
 for vertice 8: parent - 7, tempo de fim - 7
+4
+6
+3
+2
+5
+7
+8
+1
