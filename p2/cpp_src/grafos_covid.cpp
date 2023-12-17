@@ -8,22 +8,19 @@ Objectivos:
 flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 */
 
+#include <limits>
 #include <stack>
 #include <stdio.h>
 #include <vector>
-#include <limits>
 using namespace std;
 
 #define NIL 0
-enum Visited {
-    WHITE,
-    GRAY,
-    BLACK
-};
+enum Colors { WHITE, GRAY, BLACK };
 
-void DFSvisitInputGraph(int vertice, int *time, stack<int> *st_secondDFS, enum Visited *color, int *end_time, int *parent);
+void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_secondDFS,
+                        enum Colors *color, int *end_time, int *parent);
 void addEdge();
-void dfsIterative(int start);
+int dfsIterative(int start);
 void printGraph(vector<vector<int>> graph);
 void printGraphMatrix(vector<vector<int>> graph);
 
@@ -31,6 +28,7 @@ void printGraphMatrix(vector<vector<int>> graph);
 int vertices, edges;
 vector<vector<int>> graph_input;
 vector<vector<int>> graph_transposed;
+vector<bool> all_visited;
 
 int main(int argc, char const *argv[]) {
   // read first input
@@ -51,55 +49,82 @@ int main(int argc, char const *argv[]) {
   }
 
   // vectors for DFSs
-  enum Visited color[vertices+1];
-  int end_time[vertices+1];
-  int parent[vertices+1]; 
-  int SCC[vertices+1];
-  stack<int> st_firstDFS;
-  stack<int> st_secondDFS;
+  enum Colors color[vertices + 1];
+  int end_time[vertices + 1];
+  int parent[vertices + 1];
+  // int SCC[vertices + 1];
+  stack<pair<int, int>> st_secondDFS;
 
   // init vectores that need inits
   for (int i = 1; i <= vertices; i++) {
     color[i] = WHITE;
     parent[i] = NIL;
     end_time[i] = __INT_MAX__;
-    // printf("for vertice %d: parent - %d, color - %d\n", i, parent[i], color[i]);
+    // printf("for vertice %d: parent - %d, color - %d\n", i, parent[i],
+    // color[i]);
   }
 
   // // perform DFS from each
-  // int time = 1;
-  // for (int u = 1; u <= vertices; u++) {
-  //   if (color[u] == WHITE){
-  //     DFSvisitInputGraph(u, &time, &st_secondDFS, color, end_time, parent); // to insert the nodes for the next DFS correctly
-  //   }
-  // }
-  
-  
-  
-  
+  int time = 0;
+  for (int u = 1; u <= vertices; u++) {
+    if (color[u] == WHITE) {
+      DFSvisitInputGraph(u, &time, &st_secondDFS, color, end_time, parent);
+      // to insert the nodes for the next DFS correctly
+    }
+  }
+
+  printf("Longest path: %d\n", dfsIterative(1));
+
   return 0;
 }
 
-void DFSvisitInputGraph(int vertice, int *time, stack<int> *st_secondDFS, enum Visited *color, int *end_time, int *parent){
-  ++time;
+void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_secondDFS,
+                        enum Colors *color, int *end_time, int *parent) {
   // we use a stack to replace recursive approach
-  stack<int> st;
-  st.push(vertice);
-  
+  ++(*time);
+  stack<pair<int, int>> st;
+  pair<int, int> initial;
+  initial.first = vertice; initial.second = 1;
+  st.push(initial);
+
   while (!st.empty()) {
-    int u = st.top(); // u is the start node for the edges 
-    st.pop(); // we are now handeling the current vertice
+    int u = st.top().first; // read egdes from u
+    bool no_more_visits = true;
+    // closing current vertice "u"
+    if (color[u] == BLACK) {
+      ++(*time);
+      end_time[u] = *time;
+
+      pair<int, int> p;
+      p.first = u;
+      p.second = 1;
+      st_secondDFS->push(p);
+      st.pop(); // finished verifying current node, so we take it out
+
+      continue;
+    }
+
     color[u] = GRAY;
     // visit adjacentes, if there's one yet unexplored, we go through it next
     for (int v = 1; v <= vertices; v++) {
-      if (graph_input[u][v] != 0 && color[v] == WHITE){
+      if (graph_input[u][v] != 0 && color[v] == WHITE) {
         parent[v] = u;
-        st.push(v);
+        printf("parent of %d is %d\n", v, u);
+        ++(*time);
+        st.push(v); // we push the adjacentes to the stack
+        all_visited[v] = false;
+        break;
+      }
+    }
+
+    while (st.top().second <= vertices) {
+      v = st.top();
+      if (graph_input[u][v] != 0 && color[v] == WHITE){
+
       }
     }
     
   }
-  
 }
 
 void addEdge() {
@@ -110,27 +135,32 @@ void addEdge() {
   graph_transposed[v][u] = 1;
 }
 
-void dfsIterative(int start) {
-  stack<int> st;
-  st.push(start);
-  bool visited[vertices+1];
+int longestPath = 0;
+
+int dfsIterative(int start) {
+  stack<pair<int, int>> st;
+  st.push({start, 0});
+  bool visited[vertices + 1];
   visited[start] = true;
 
   while (!st.empty()) {
-    int current = st.top();
+    int current = st.top().first;
+    int pathLength = st.top().second;
     st.pop();
 
-    // Process the current node
-    printf("%d ", current);
-
+    // Update the longest path if necessary
+    longestPath = max(longestPath, pathLength);
     // Visit all the adjacent nodes of the current node
-    for (int v = 1; v <= vertices; v++) {
-      if (graph_input[current][v] != 0 && !visited[v]) {
-        st.push(v);
-        visited[v] = true;
+    for (int v = 1; v <= vertices; ++v) {
+      for (int v = 1; v <= vertices; ++v) {
+        if (graph_input[current][v] != 0 && !visited[v]) {
+          st.push({v, pathLength + 1});
+          visited[v] = true;
+        }
       }
     }
   }
+  return longestPath;
 }
 
 // debug coisos
@@ -145,17 +175,17 @@ void printGraph(vector<vector<int>> graph) {
   }
 }
 
-void printGraphMatrix(vector<vector<int>> graph){
+void printGraphMatrix(vector<vector<int>> graph) {
   printf("[");
   for (int u = 1; u <= vertices; u++) {
     for (int v = 1; v <= vertices; v++) {
-        if (v == vertices)
-          printf("%d", graph[u][v]);
-        else
-          printf("%d, ", graph[u][v]);
+      if (v == vertices)
+        printf("%d", graph[u][v]);
+      else
+        printf("%d, ", graph[u][v]);
     }
     if (u != vertices)
       printf("\n");
   }
-  printf("]\n"); 
+  printf("]\n");
 }
