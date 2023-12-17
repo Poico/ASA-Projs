@@ -11,16 +11,17 @@ flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 #include <limits>
 #include <stack>
 #include <stdio.h>
-#include <vector>
-#include <utility>
 #include <tuple>
+#include <utility>
+#include <vector>
 using namespace std;
 
 #define NIL 0
 enum Colors { WHITE, GRAY, BLACK };
 
-void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_secondDFS,
-                        enum Colors *color, int *end_time, int *parent);
+void DFSvisitInputGraph(int vertice, int *time,
+                        stack<pair<int, int>> *st_secondDFS, enum Colors *color,
+                        int *end_time, int *parent);
 void addEdge();
 int dfsIterative(int start);
 void printGraph(vector<vector<int>> graph);
@@ -56,7 +57,6 @@ int main(int argc, char const *argv[]) {
   int parent[vertices + 1];
   int SCCs[vertices + 1];
   stack<pair<int, int>> st_secondDFS;
-
 
   // init vectores that need inits
   for (int i = 1; i <= vertices; i++) {
@@ -99,8 +99,9 @@ int main(int argc, char const *argv[]) {
   return 0;
 }
 
-void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_secondDFS,
-                        enum Colors *color, int *end_time, int *parent) {
+void DFSvisitInputGraph(int vertice, int *time,
+                        stack<pair<int, int>> *st_secondDFS, enum Colors *color,
+                        int *end_time, int *parent) {
   // we use a stack to replace recursive approach
   ++(*time);
   // pair of vertice u and vertice where we left off on the DFSvisit of u
@@ -118,22 +119,24 @@ void DFSvisitInputGraph(int vertice, int *time, stack<pair<int, int>> *st_second
     // visit adjacents, if there's one yet unexplored, we go through it next
     while (st.top().second < vertices) {
       ++st.top().second;
-      if (graph_input[u][st.top().second] != 0 && color[st.top().second] == WHITE){
+      if (graph_input[u][st.top().second] != 0 &&
+          color[st.top().second] == WHITE) {
         color[st.top().second] = GRAY;
         ++(*time);
         parent[st.top().second] = u;
         st.push(make_pair(st.top().second, 0));
-        
-        break; // after we add it to the stack, we break from here, to look at the added node
+
+        break; // after we add it to the stack, we break from here, to look at
+               // the added node
       }
-      
     }
     // after i visited everyone, we close this vertice
     if (st.top().second == vertices) {
       ++(*time);
       color[u] = BLACK;
       end_time[u] = *time;
-      printf("fechei o vertice %d com tempo de fim %d e predecessor %d\n", u, end_time[u], parent[u]);
+      printf("fechei o vertice %d com tempo de fim %d e predecessor %d\n", u,
+             end_time[u], parent[u]);
       st_secondDFS->push(make_pair(u, 0));
       st.pop(); // finished verifying current node, so we take it out
     }
