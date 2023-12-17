@@ -11,15 +11,26 @@ flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 #include <stack>
 #include <stdio.h>
 #include <vector>
+#include <limits>
 using namespace std;
+
+#define NIL 0
+enum Visited {
+    WHITE,
+    GRAY,
+    BLACK
+};
+
+void DFSvisitInputGraph(int vertice, int *time, stack<int> *st_secondDFS, enum Visited *color, int *end_time, int *parent);
 void addEdge();
 void dfsIterative(int start);
-void printGraph();
+void printGraph(vector<vector<int>> graph);
 void printGraphMatrix(vector<vector<int>> graph);
+
+// global vars. to make things easier for the project
 int vertices, edges;
 vector<vector<int>> graph_input;
 vector<vector<int>> graph_transposed;
-vector<bool> visited;
 
 int main(int argc, char const *argv[]) {
   // read first input
@@ -29,8 +40,9 @@ int main(int argc, char const *argv[]) {
   graph_input.resize(vertices + 1);
   graph_transposed.resize(vertices + 1);
   for (int i = 1; i <= vertices; i++) {
-    graph_input[i].resize(edges + 1);
-    graph_transposed[i].resize(edges + 1);
+    // se vai ser matriz, então basta ser V^2
+    graph_input[i].resize(vertices + 1);
+    graph_transposed[i].resize(vertices + 1);
   }
 
   // quem tem a possibilidade de infectar outros, ou seja, read edges
@@ -38,43 +50,56 @@ int main(int argc, char const *argv[]) {
     addEdge();
   }
 
-  // perform DFS from each unvisited vertex
-  // visited.resize(vertices + 1, false);
-  // for (int v = 1; v <= vertices; v++) {
-  //   if (!visited[v]) {
-  //     dfsIterative(v);
+  // vectors for DFSs
+  enum Visited color[vertices+1];
+  int end_time[vertices+1];
+  int parent[vertices+1]; 
+  int SCC[vertices+1];
+  stack<int> st_firstDFS;
+  stack<int> st_secondDFS;
+
+  // init vectores that need inits
+  for (int i = 1; i <= vertices; i++) {
+    color[i] = WHITE;
+    parent[i] = NIL;
+    end_time[i] = __INT_MAX__;
+    // printf("for vertice %d: parent - %d, color - %d\n", i, parent[i], color[i]);
+  }
+
+  // // perform DFS from each
+  // int time = 1;
+  // for (int u = 1; u <= vertices; u++) {
+  //   if (color[u] == WHITE){
+  //     DFSvisitInputGraph(u, &time, &st_secondDFS, color, end_time, parent); // to insert the nodes for the next DFS correctly
   //   }
   // }
   
-  printGraphMatrix(graph_input);
-  printGraphMatrix(graph_transposed);
-
+  
+  
+  
   return 0;
 }
 
-// pretty print
-void printGraph() {
-  for (int v = 1; v <= vertices; v++) {
-    for (int e = 1; e <= edges; e++) {
-      if (graph_input[v][e] != 0)
-        printf("%d connects to %d\n", v, e);
+void DFSvisitInputGraph(int vertice, int *time, stack<int> *st_secondDFS, enum Visited *color, int *end_time, int *parent){
+  ++time;
+  // we use a stack to replace recursive approach
+  stack<int> st;
+  st.push(vertice);
+  
+  while (!st.empty()) {
+    int u = st.top(); // u is the start node for the edges 
+    st.pop(); // we are now handeling the current vertice
+    color[u] = GRAY;
+    // visit adjacentes, if there's one yet unexplored, we go through it next
+    for (int v = 1; v <= vertices; v++) {
+      if (graph_input[u][v] != 0 && color[v] == WHITE){
+        parent[v] = u;
+        st.push(v);
+      }
     }
+    
   }
-}
-
-void printGraphMatrix(vector<vector<int>> graph){
-  printf("[");
-  for (int v = 1; v <= vertices; v++) {
-    for (int e = 1; e <= edges; e++) {
-        if (e == edges)
-          printf("%d", graph[v][e]);
-        else
-          printf("%d, ", graph[v][e]);
-    }
-    if (v != vertices)
-      printf("\n");
-  }
-  printf("]\n"); 
+  
 }
 
 void addEdge() {
@@ -88,6 +113,7 @@ void addEdge() {
 void dfsIterative(int start) {
   stack<int> st;
   st.push(start);
+  bool visited[vertices+1];
   visited[start] = true;
 
   while (!st.empty()) {
@@ -105,4 +131,31 @@ void dfsIterative(int start) {
       }
     }
   }
+}
+
+// debug coisos
+
+// pretty print
+void printGraph(vector<vector<int>> graph) {
+  for (int u = 1; u <= vertices; u++) {
+    for (int v = 1; v <= vertices; v++) {
+      if (graph[u][v] != 0)
+        printf("%d connects to %d\n", u, v);
+    }
+  }
+}
+
+void printGraphMatrix(vector<vector<int>> graph){
+  printf("[");
+  for (int u = 1; u <= vertices; u++) {
+    for (int v = 1; v <= vertices; v++) {
+        if (v == vertices)
+          printf("%d", graph[u][v]);
+        else
+          printf("%d, ", graph[u][v]);
+    }
+    if (u != vertices)
+      printf("\n");
+  }
+  printf("]\n"); 
 }
