@@ -17,17 +17,16 @@ flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 using namespace std;
 
 #define NIL 0
-enum Colors { WHITE, GRAY, BLACK };
 
 void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
-                        enum Colors *color);
+                        char *color);
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
-                             enum Colors *color);
+                             char *color);
 int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
-                      enum Colors *color, int SCC_num);
+                      char *color, int SCC_num);
 
 void addEdge();
-void resetColors(enum Colors *color);
+void resetColors(char *color);
 
 // global vars. to make things easier for the project
 int vertices, edges;
@@ -53,18 +52,18 @@ int main(int argc, char const *argv[]) {
   }
 
   // vectors for DFSs
-  enum Colors color[vertices + 1];
+  char color[vertices + 1];
   int SCCs[vertices + 1];
   stack<pair<int, int>> st_secondDFS;
 
   // init vectores that need inits
   for (int i = 1; i <= vertices; i++) {
-    color[i] = WHITE;
+    color[i] = 'W';
   }
 
   // perform first DFS
   for (int u = 1; u <= vertices; u++) {
-    if (color[u] == WHITE) {
+    if (color[u] == 'W') {
       DFSvisitInputGraph(u, &st_secondDFS, color);
       // to insert the nodes for the next DFS correctly
     }
@@ -78,7 +77,7 @@ int main(int argc, char const *argv[]) {
     pair<int, int> p = st_secondDFS.top();
     int u = p.first;
     st_secondDFS.pop();
-    if (color[u] == WHITE) {
+    if (color[u] == 'W') {
       DFSvisitTransposedGraph(u, SCC_num, SCCs, color);
       ++SCC_num;
     }
@@ -104,7 +103,7 @@ int main(int argc, char const *argv[]) {
   int longest = 0;
   int latest = 0;
   for (int u = 1; u <= SCC_num; u++) {
-    if (color[u] == WHITE) {
+    if (color[u] == 'W') {
       latest = DFSvisitSCCsGraph(graph_sccs, u, color, SCC_num);
       longest = max<int>(longest, latest);
     }
@@ -112,17 +111,18 @@ int main(int argc, char const *argv[]) {
 
   printf("%d\n", longest);
 
+
   return 0;
 }
 
 void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
-                        enum Colors *color) {
+                        char *color) {
   // we use a stack to replace recursive approach
   // pair of vertice u and vertice where we left off on the DFSvisit of u
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, 0);
   st.push(initial);
-  color[vertice] = GRAY;
+  color[vertice] = 'G';
 
   while (!st.empty()) {
     // int u = st.top().first dá seg fault :'(
@@ -133,8 +133,8 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
     while (st.top().second < vertices) {
       ++st.top().second;
       if (graph_input[u][st.top().second] != 0 &&
-          color[st.top().second] == WHITE) {
-        color[st.top().second] = GRAY;
+          color[st.top().second] == 'W') {
+        color[st.top().second] = 'G';
         st.push(make_pair(st.top().second, 0));
 
         break; // after we add it to the stack, we break from here, to look at
@@ -143,7 +143,7 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
     }
     // after i visited everyone, we close this vertice
     if (st.top().second == vertices) {
-      color[u] = BLACK;
+      color[u] = 'B';
       st_secondDFS->push(make_pair(u, 0));
       st.pop(); // finished verifying current node, so we take it out
     }
@@ -151,12 +151,12 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
 }
 
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
-                             enum Colors *color) {
+                             char *color) {
   // pair of vertice u and vertice where we left off on the DFSvisit of u
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, 0);
   st.push(initial);
-  color[vertice] = GRAY;
+  color[vertice] = 'G';
 
   while (!st.empty()) {
     pair<int, int> p = st.top();
@@ -166,8 +166,8 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
     while (st.top().second < vertices) {
       ++st.top().second;
       if (graph_transposed[u][st.top().second] != 0 &&
-          color[st.top().second] == WHITE) {
-        color[st.top().second] = GRAY;
+          color[st.top().second] == 'W') {
+        color[st.top().second] = 'G';
         st.push(make_pair(st.top().second, 0));
 
         break; // after we add it to the stack, we break from here, to look at
@@ -176,7 +176,7 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
     }
     // after i visited everyone, we close this vertice
     if (st.top().second == vertices) {
-      color[u] = BLACK;
+      color[u] = 'B';
       SCCs[u] = SCC_num;
       st.pop(); // finished verifying current node, so we take it out
     }
@@ -192,7 +192,7 @@ void addEdge() {
 }
 
 int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
-                      enum Colors *color, int SCC_num) {
+                      char *color, int SCC_num) {
   int mais_maior = 0;
   int current_depth = 0;
 
@@ -200,7 +200,7 @@ int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, 0);
   st.push(initial);
-  color[vertice] = GRAY;
+  color[vertice] = 'G';
 
   while (!st.empty()) {
     // get vertice
@@ -211,9 +211,9 @@ int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
     while (st.top().second < SCC_num) {
       ++st.top().second;
       if (graph_sccs[u][st.top().second] != 0 &&
-          color[st.top().second] == WHITE) {
+          color[st.top().second] == 'W') {
 
-        color[st.top().second] = GRAY;
+        color[st.top().second] = 'G';
         st.push(make_pair(st.top().second, 0));
         ++current_depth;
         mais_maior = max<int>(mais_maior, current_depth);
@@ -223,7 +223,7 @@ int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
     }
     // after i visited everyone, we close this vertice
     if (st.top().second == SCC_num) {
-      color[u] = BLACK;
+      color[u] = 'B';
       st.pop(); // finished verifying current node, so we take it out
       --current_depth;
     }
@@ -231,8 +231,8 @@ int DFSvisitSCCsGraph(vector<vector<bool>> graph_sccs, int vertice,
   return mais_maior;
 }
 
-void resetColors(enum Colors *color) {
+void resetColors(char *color) {
   for (int i = 1; i <= vertices; i++) {
-    color[i] = WHITE;
+    color[i] = 'W';
   }
 }
