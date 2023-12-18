@@ -107,7 +107,6 @@ int main(int argc, char const *argv[]) {
     }
   }
   
-
   int maxDistance = 0;
   for (int u = 1; u < SCC_num; u++) {
     if (distances[u] > maxDistance) {
