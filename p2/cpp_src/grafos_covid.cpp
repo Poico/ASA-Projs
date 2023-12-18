@@ -22,7 +22,7 @@ using namespace std;
 #define GRAY 'G'
 #define BLACK 'B'
 
-void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
+void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
                         char *color);
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
                              char *color);
@@ -41,38 +41,38 @@ int main(int argc, char const *argv[]) {
   scanf("%d %d", &vertices, &edges);
 
   // initialize input and trans graph
-  graph_input.resize(vertices + 1);
-  graph_transposed.resize(vertices + 1);
+  graph_input.resize(vertices);
+  graph_transposed.resize(vertices);
 
   // quem tem a possibilidade de infectar outros, ou seja, read edges
   for (int i = 0; i < edges; i++) {
     // an edge that goes form u to v (u->v)
     int u, v;
     scanf("%d %d", &u, &v);
-    graph_input[u].push_back(v);
-    graph_transposed[v].push_back(u); // >:D transposed graph
+    graph_input[u-1].push_back(v-1);
+    graph_transposed[v-1].push_back(u-1); // >:D transposed graph
   }
 
   // vectors for DFSs
-  char color[vertices + 1];
-  int SCCs[vertices + 1];
+  char color[vertices];
+  int SCCs[vertices];
   stack<pair<int, int>> st_secondDFS;
 
   // init vectores that need inits
-  for (int i = 1; i <= vertices; i++) {
+  for (int i = 0; i < vertices; i++) {
     color[i] = WHITE;
   }
 
   // perform first DFS
-  for (int u = 1; u <= vertices; u++) {
+  for (int u = 0; u < vertices; u++) {
     if (color[u] == WHITE) {
-      DFSvisitInputGraph(u, &st_secondDFS, color);
+      DFSvisitInputGraph(u, st_secondDFS, color);
       // to insert the nodes for the next DFS correctly
     }
   }
 
   // second DFS to identify SCCs
-  int SCC_num = 1;
+  int SCC_num = 0;
   resetColors(color);
   while (!st_secondDFS.empty()) {
     pair<int, int> p = st_secondDFS.top();
@@ -87,7 +87,7 @@ int main(int argc, char const *argv[]) {
   // init SCCs graph
   graph_sccs.resize(SCC_num);
   // create edges for the graph 
-  for (int i = 1; i <= vertices; i++) {
+  for (int i = 0; i < vertices; i++) {
     for (int j = 0; j < (int)graph_input[i].size(); j++) {
       int neighbor = graph_input[i][j];
       if (SCCs[i] != SCCs[neighbor]) {
@@ -100,7 +100,7 @@ int main(int argc, char const *argv[]) {
   memset(distances, 0, sizeof(distances));
   int maxDistance = 0; // Initialize maxDistance
 
-  for (int u = 1; u < SCC_num; u++) {
+  for (int u = 0; u < SCC_num; u++) {
     int size = (int)graph_sccs[u].size();
     for (int v = 0; v < size; v++) {
       int adjacent = graph_sccs[u][v];
@@ -119,7 +119,7 @@ int main(int argc, char const *argv[]) {
   return 0;
 }
 
-void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
+void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
                         char *color) {
   // we use a stack to replace recursive approach
   // pair of vertice u and vertice where we left off on the DFSvisit of u
@@ -150,7 +150,7 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> *st_secondDFS,
     // after i visited everyone, we close this vertice
     if (st.top().second == edges_size-1) {
       color[u] = BLACK;
-      st_secondDFS->push(make_pair(u, -1));
+      st_secondDFS.push(make_pair(u, -1));
       st.pop(); // finished verifying current node, so we take it out
     }
   }
@@ -191,13 +191,13 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
 }
 
 void resetColors(char *color) {
-  for (int i = 1; i <= vertices; i++) {
+  for (int i = 0; i < vertices; i++) {
     color[i] = WHITE;
   }
 }
 
 void printGraph(vector<vector<int>> graph, int vertices){
-  for (int i = 1; i <= vertices; i++) {
+  for (int i = 0; i < vertices; i++) {
     int size = (int)graph[i].size();
     for (int j = 0; j < size; ++j)
       printf("%d connects to %d\n", i, graph[i][j]);
