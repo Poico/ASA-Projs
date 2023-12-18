@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -o -O3 -std=c++11
+CFLAGS = -g -Wall -o -O3 -std=c++11
 
 SRC = grafos_covid.cpp
 OBJ = $(SRC:.cpp=.o)

@@ -8,13 +8,13 @@ Objectivos:
 flags de compilação:  g++ -std=c++11 -O3 -Wall file.cpp -lm
 */
 
+#include <cstring>
 #include <limits>
 #include <stack>
 #include <stdio.h>
 #include <tuple>
 #include <utility>
 #include <vector>
-#include <cstring>
 using namespace std;
 
 #define NIL 0
@@ -24,8 +24,7 @@ using namespace std;
 
 void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
                         char *color);
-void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
-                             char *color);
+void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color);
 void printGraph(vector<vector<int>> graph, int vertices);
 
 void resetColors(char *color);
@@ -49,13 +48,13 @@ int main(int argc, char const *argv[]) {
     // an edge that goes form u to v (u->v)
     int u, v;
     scanf("%d %d", &u, &v);
-    graph_input[u-1].push_back(v-1);
-    graph_transposed[v-1].push_back(u-1); // >:D transposed graph
+    graph_input[u - 1].push_back(v - 1);
+    graph_transposed[v - 1].push_back(u - 1); // >:D transposed graph
   }
 
   // vectors for DFSs
-  char color[vertices];
-  int SCCs[vertices];
+  char* color=new char[vertices];
+  int* SCCs = new int[vertices];
   stack<pair<int, int>> st_secondDFS;
 
   // init vectores that need inits
@@ -83,10 +82,10 @@ int main(int argc, char const *argv[]) {
       ++SCC_num;
     }
   }
-  
+
   // init SCCs graph
   graph_sccs.resize(SCC_num);
-  // create edges for the graph 
+  // create edges for the graph
   for (int i = 0; i < vertices; i++) {
     for (int j = 0; j < (int)graph_input[i].size(); j++) {
       int neighbor = graph_input[i][j];
@@ -96,8 +95,7 @@ int main(int argc, char const *argv[]) {
     }
   }
   // calculate distances
-  int distances[SCC_num];
-  memset(distances, 0, sizeof(distances));
+  int* distances = new int[SCC_num](); // Initialize distances array with zeros
   int maxDistance = 0; // Initialize maxDistance
 
   for (int u = 0; u < SCC_num; u++) {
@@ -114,7 +112,6 @@ int main(int argc, char const *argv[]) {
   }
 
   printf("%d\n", maxDistance);
-
 
   return 0;
 }
@@ -135,7 +132,7 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
     int u = p.first;
 
     int edges_size = (int)graph_input[u].size();
-    
+
     // visit adjacents, if there's one yet unexplored, we go through it next
     while (st.top().second < edges_size - 1) {
       ++st.top().second;
@@ -148,7 +145,7 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
       }
     }
     // after i visited everyone, we close this vertice
-    if (st.top().second == edges_size-1) {
+    if (st.top().second == edges_size - 1) {
       color[u] = BLACK;
       st_secondDFS.push(make_pair(u, -1));
       st.pop(); // finished verifying current node, so we take it out
@@ -156,8 +153,7 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
   }
 }
 
-void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs,
-                             char *color) {
+void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color) {
   // pair of vertice u and vertice index where we left off on the DFSvisit of u
   stack<pair<int, int>> st;
   pair<int, int> initial(vertice, -1);
@@ -196,11 +192,10 @@ void resetColors(char *color) {
   }
 }
 
-void printGraph(vector<vector<int>> graph, int vertices){
+void printGraph(vector<vector<int>> graph, int vertices) {
   for (int i = 0; i < vertices; i++) {
     int size = (int)graph[i].size();
     for (int j = 0; j < size; ++j)
       printf("%d connects to %d\n", i, graph[i][j]);
   }
-  
 }
