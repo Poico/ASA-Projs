@@ -85,7 +85,7 @@ int main(int argc, char const *argv[]) {
   }
   
   // init SCCs graph
-  graph_sccs.resize(SCC_num + 1);
+  graph_sccs.resize(SCC_num);
   // create edges for the graph 
   for (int i = 1; i <= vertices; i++) {
     for (int j = 0; j < (int)graph_input[i].size(); j++) {
