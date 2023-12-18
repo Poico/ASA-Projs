@@ -22,7 +22,7 @@ using namespace std;
 #define GRAY 'G'
 #define BLACK 'B'
 
-void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
+void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS,
                         char *color);
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color);
 void printGraph(vector<vector<int>> graph, int vertices);
@@ -55,7 +55,7 @@ int main(int argc, char const *argv[]) {
   // vectors for DFSs
   char* color= new char[vertices];
   int* SCCs = new int[vertices];
-  stack<pair<int, int>> st_secondDFS;
+  stack<int> st_secondDFS;
 
   // init vectores that need inits
   for (int i = 0; i < vertices; i++) {
@@ -74,8 +74,7 @@ int main(int argc, char const *argv[]) {
   int SCC_num = 0;
   resetColors(color);
   while (!st_secondDFS.empty()) {
-    pair<int, int> p = st_secondDFS.top();
-    int u = p.first;
+    int u = st_secondDFS.top();
     st_secondDFS.pop();
     if (color[u] == WHITE) {
       DFSvisitTransposedGraph(u, SCC_num, SCCs, color);
@@ -84,7 +83,7 @@ int main(int argc, char const *argv[]) {
   }
 
   // init SCCs graph
-  graph_sccs.resize(SCC_num);
+  graph_sccs.resize(SCC_num+1);
   // create edges for the graph
   for (int i = 0; i < vertices; i++) {
     for (int j = 0; j < (int)graph_input[i].size(); j++) {
@@ -116,38 +115,30 @@ int main(int argc, char const *argv[]) {
   return 0;
 }
 
-void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
+void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS,
                         char *color) {
   // we use a stack to replace recursive approach
   // pair of vertice u and vertice where we left off on the DFSvisit of u
-  stack<pair<int, int>> st;
-  pair<int, int> initial(vertice, -1);
-  st.push(initial);
-  color[vertice] = GRAY;
-
+  stack<int> st;
+  st.push(vertice);
+  
   while (!st.empty()) {
-    // int u = st.top().first dá seg fault :'(
     // me when segfaulting this balls
-    pair<int, int> p = st.top();
-    int u = p.first;
+    int u = st.top();
 
     int edges_size = (int)graph_input[u].size();
-
     // visit adjacents, if there's one yet unexplored, we go through it next
-    while (st.top().second < edges_size - 1) {
-      ++st.top().second;
-      if (color[graph_input[u][st.top().second]] == WHITE) {
-        color[graph_input[u][st.top().second]] = GRAY;
-        st.push(make_pair(graph_input[u][st.top().second], -1));
-
-        break; // after we add it to the stack, we break from here, to look at
-               // the added node
+    if (color[u] == WHITE){
+      // currently visiting
+      color[u] = GRAY;
+      for (int v = 0; v < edges_size; ++v) {
+        if (color[graph_input[u][v]] == WHITE) {
+          st.push(graph_input[u][v]); 
+        }
       }
-    }
-    // after i visited everyone, we close this vertice
-    if (st.top().second == edges_size - 1) {
+    } else {
       color[u] = BLACK;
-      st_secondDFS.push(make_pair(u, -1));
+      st_secondDFS.push(u);
       st.pop(); // finished verifying current node, so we take it out
     }
   }
@@ -155,30 +146,23 @@ void DFSvisitInputGraph(int vertice, stack<pair<int, int>> &st_secondDFS,
 
 void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color) {
   // pair of vertice u and vertice index where we left off on the DFSvisit of u
-  stack<pair<int, int>> st;
-  pair<int, int> initial(vertice, -1);
-  st.push(initial);
-  color[vertice] = GRAY;
+  stack<int> st;
+  st.push(vertice);
 
   while (!st.empty()) {
-    pair<int, int> p = st.top();
-    int u = p.first;
+    int u = st.top();
 
     int edges_size = (int)graph_transposed[u].size();
 
     // visit adjacents, if there's one yet unexplored, we go through it next
-    while (st.top().second < edges_size - 1) {
-      ++st.top().second;
-      if (color[graph_transposed[u][st.top().second]] == WHITE) {
-        color[st.top().second] = GRAY;
-        st.push(make_pair(graph_transposed[u][st.top().second], -1));
-
-        break; // after we add it to the stack, we break from here, to look at
-               // the added node
+    if (color[u] == WHITE){
+      color[u] = GRAY;
+      for (int v = 0; v < edges_size; ++v) {
+        if (color[graph_transposed[u][v]] == WHITE) {
+          st.push(graph_transposed[u][v]); 
+        }
       }
-    }
-    // after i visited everyone, we close this vertice
-    if (st.top().second == edges_size - 1) {
+    } else {
       color[u] = BLACK;
       SCCs[u] = SCC_num;
       st.pop(); // finished verifying current node, so we take it out
