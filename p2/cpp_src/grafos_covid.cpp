@@ -98,19 +98,18 @@ int main(int argc, char const *argv[]) {
   // calculate distances
   int distances[SCC_num];
   memset(distances, 0, sizeof(distances));
-  for (int u = 1; u < SCC_num; u++){
+  int maxDistance = 0; // Initialize maxDistance
+
+  for (int u = 1; u < SCC_num; u++) {
     int size = (int)graph_sccs[u].size();
     for (int v = 0; v < size; v++) {
       int adjacent = graph_sccs[u][v];
-      if (distances[adjacent] < distances[u] + 1)
+      if (distances[adjacent] < distances[u] + 1) {
         distances[adjacent] = distances[u] + 1;
-    }
-  }
-  
-  int maxDistance = 0;
-  for (int u = 1; u < SCC_num; u++) {
-    if (distances[u] > maxDistance) {
-      maxDistance = distances[u];
+        if (distances[adjacent] > maxDistance) {
+          maxDistance = distances[adjacent]; // Update maxDistance
+        }
+      }
     }
   }
 
