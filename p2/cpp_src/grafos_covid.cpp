@@ -53,7 +53,7 @@ int main(int argc, char const *argv[]) {
   }
 
   // vectors for DFSs
-  char* color=new char[vertices];
+  char* color= new char[vertices];
   int* SCCs = new int[vertices];
   stack<pair<int, int>> st_secondDFS;
 
