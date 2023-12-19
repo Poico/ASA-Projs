@@ -22,12 +22,9 @@ using namespace std;
 #define GRAY 'G'
 #define BLACK 'B'
 
-void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS,
-                        char *color);
-void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color);
-void printGraph(vector<vector<int>> graph, int vertices);
+void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS, vector<char> &color);
+void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, vector<char>& color);
 
-void resetColors(char *color);
 
 // global vars. to make things easier for the project
 int vertices, edges;
@@ -53,14 +50,11 @@ int main(int argc, char const *argv[]) {
   }
 
   // vectors for DFSs
-  char* color= new char[vertices];
-  int* SCCs = new int[vertices];
+  
+  vector<char> color = vector<char>(vertices, WHITE);
+  int *SCCs = new int[vertices];
   stack<int> st_secondDFS;
 
-  // init vectores that need inits
-  for (int i = 0; i < vertices; i++) {
-    color[i] = WHITE;
-  }
 
   // perform first DFS
   for (int u = 0; u < vertices; u++) {
@@ -72,7 +66,7 @@ int main(int argc, char const *argv[]) {
 
   // second DFS to identify SCCs
   int SCC_num = 0;
-  resetColors(color);
+  color = vector<char>(vertices, WHITE);
   while (!st_secondDFS.empty()) {
     int u = st_secondDFS.top();
     st_secondDFS.pop();
@@ -83,7 +77,7 @@ int main(int argc, char const *argv[]) {
   }
 
   // init SCCs graph
-  graph_sccs.resize(SCC_num+1);
+  graph_sccs.resize(SCC_num + 1);
   // create edges for the graph
   for (int i = 0; i < vertices; i++) {
     for (int j = 0; j < (int)graph_input[i].size(); j++) {
@@ -93,47 +87,44 @@ int main(int argc, char const *argv[]) {
       }
     }
   }
-  // calculate distances
-  int* distances = new int[SCC_num](); // Initialize distances array with zeros
-  int maxDistance = 0; // Initialize maxDistance
+  
+
+  vector<int> distances(SCC_num, 0);
+  int maxDistance = 0;
 
   for (int u = 0; u < SCC_num; u++) {
     int size = (int)graph_sccs[u].size();
     for (int v = 0; v < size; v++) {
       int adjacent = graph_sccs[u][v];
-      if (distances[adjacent] < distances[u] + 1) {
-        distances[adjacent] = distances[u] + 1;
-        if (distances[adjacent] > maxDistance) {
-          maxDistance = distances[adjacent]; // Update maxDistance
-        }
-      }
+      distances[adjacent] = max(distances[adjacent], distances[u] + 1);
+      maxDistance = max(maxDistance, distances[adjacent]);
     }
   }
+
 
   printf("%d\n", maxDistance);
 
   return 0;
 }
 
-void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS,
-                        char *color) {
+void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS, vector<char> &color) {
   // we use a stack to replace recursive approach
   // pair of vertice u and vertice where we left off on the DFSvisit of u
   stack<int> st;
   st.push(vertice);
-  
+
   while (!st.empty()) {
     // me when segfaulting this balls
     int u = st.top();
 
     int edges_size = (int)graph_input[u].size();
     // visit adjacents, if there's one yet unexplored, we go through it next
-    if (color[u] == WHITE){
+    if (color[u] == WHITE) {
       // currently visiting
       color[u] = GRAY;
       for (int v = 0; v < edges_size; ++v) {
         if (color[graph_input[u][v]] == WHITE) {
-          st.push(graph_input[u][v]); 
+          st.push(graph_input[u][v]);
         }
       }
     } else {
@@ -146,7 +137,7 @@ void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS,
   }
 }
 
-void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color) {
+void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, vector<char>& color) {
   // pair of vertice u and vertice index where we left off on the DFSvisit of u
   stack<int> st;
   st.push(vertice);
@@ -157,11 +148,11 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color) {
     int edges_size = (int)graph_transposed[u].size();
 
     // visit adjacents, if there's one yet unexplored, we go through it next
-    if (color[u] == WHITE){
+    if (color[u] == WHITE) {
       color[u] = GRAY;
       for (int v = 0; v < edges_size; ++v) {
         if (color[graph_transposed[u][v]] == WHITE) {
-          st.push(graph_transposed[u][v]); 
+          st.push(graph_transposed[u][v]);
         }
       }
     } else {
@@ -171,19 +162,5 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color) {
       }
       st.pop(); // finished verifying current node, so we take it out
     }
-  }
-}
-
-void resetColors(char *color) {
-  for (int i = 0; i < vertices; i++) {
-    color[i] = WHITE;
-  }
-}
-
-void printGraph(vector<vector<int>> graph, int vertices) {
-  for (int i = 0; i < vertices; i++) {
-    int size = (int)graph[i].size();
-    for (int j = 0; j < size; ++j)
-      printf("%d connects to %d\n", i, graph[i][j]);
   }
 }
