@@ -137,8 +137,10 @@ void DFSvisitInputGraph(int vertice, stack<int> &st_secondDFS,
         }
       }
     } else {
-      color[u] = BLACK;
-      st_secondDFS.push(u);
+      if (color[u] == GRAY){
+        color[u] = BLACK;
+        st_secondDFS.push(u);
+      }
       st.pop(); // finished verifying current node, so we take it out
     }
   }
@@ -163,8 +165,10 @@ void DFSvisitTransposedGraph(int vertice, int SCC_num, int *SCCs, char *color) {
         }
       }
     } else {
-      color[u] = BLACK;
-      SCCs[u] = SCC_num;
+      if (color[u] == GRAY) {
+        color[u] = BLACK;
+        SCCs[u] = SCC_num;
+      }
       st.pop(); // finished verifying current node, so we take it out
     }
   }
