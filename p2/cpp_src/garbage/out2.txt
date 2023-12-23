@@ -1,0 +1,9 @@
+for vertice 1: SCC_id - 6, end_time - 16
+for vertice 2: SCC_id - 4, end_time - 8
+for vertice 3: SCC_id - 3, end_time - 6
+for vertice 4: SCC_id - 1, end_time - 2
+for vertice 5: SCC_id - 5, end_time - 14
+for vertice 6: SCC_id - 2, end_time - 4
+for vertice 7: SCC_id - 5, end_time - 12
+for vertice 8: SCC_id - 5, end_time - 13
+3
