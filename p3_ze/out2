@@ -1,6 +1,6 @@
 NatalBanal:
 MAXIMIZE
-130*pack_0 + 130*pack_1 + 50*toy_0 + 30*toy_1 + 45*toy_2 + 40*toy_3 + 35*toy_4 + 0
+129*pack_0 + 130*pack_1 + 50*toy_0 + 30*toy_1 + 45*toy_2 + 40*toy_3 + 35*toy_4 + 0
 SUBJECT TO
 _C1: pack_0 + toy_0 <= 27
 
@@ -12,7 +12,7 @@ _C4: pack_1 + toy_3 <= 37
 
 _C5: pack_0 + toy_4 <= 35
 
-_C6: 3 pack_0 + 3 pack_1 + toy_0 + toy_1 + toy_2 + toy_3 + toy_4 <= 150
+_C6: 3 pack_0 + 3 pack_1 + toy_0 + toy_1 + toy_2 + toy_3 + toy_4 <= 15
 
 VARIABLES
 0 <= pack_0 Integer
@@ -23,11 +23,11 @@ VARIABLES
 0 <= toy_3 Integer
 0 <= toy_4 Integer
 
-6440
+750
 pack_0 = 0
-pack_1 = 30
-toy_0 = 27
+pack_1 = 0
+toy_0 = 15
 toy_1 = 0
 toy_2 = 0
-toy_3 = 7
-toy_4 = 26
+toy_3 = 0
+toy_4 = 0
