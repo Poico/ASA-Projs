@@ -1,0 +1,29 @@
+NatalBanal:
+MAXIMIZE
+130*pack_0 + 130*pack_1 + 50*toy_0 + 30*toy_1 + 45*toy_2 + 40*toy_3 + 35*toy_4 + 0
+SUBJECT TO
+_C1: toy_0 <= 27
+
+_C2: toy_1 <= 33
+
+_C3: toy_2 <= 30
+
+_C4: toy_3 <= 37
+
+_C5: toy_4 <= 35
+
+_C6: pack_0 + toy_0 + toy_2 + toy_4 <= 27
+
+_C7: pack_1 + toy_1 + toy_2 + toy_3 <= 30
+
+_C8: 3 pack_0 + 3 pack_1 + toy_0 + toy_1 + toy_2 + toy_3 + toy_4 <= 150
+
+VARIABLES
+0 <= pack_0 Integer
+0 <= pack_1 Integer
+0 <= toy_0 Integer
+0 <= toy_1 Integer
+0 <= toy_2 Integer
+0 <= toy_3 Integer
+0 <= toy_4 Integer
+
