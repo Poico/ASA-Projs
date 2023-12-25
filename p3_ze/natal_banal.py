@@ -53,7 +53,7 @@ prob += lpSum([toy_vars[toy] for toy in toy_vars]) + lpSum([3*pack_vars[pack] fo
 prob += lpSum([toy_vars[toy]*toys_info[toy][PROFIT] for toy in toy_vars]) + \
         lpSum(pack_vars[i]*packs_info[i][PROFIT] for i in pack_vars)
 
-print(prob)
+# print(prob)
 # the solution
 prob.solve(GLPK(msg=0))
 if (prob.status == LpStatusOptimal):
@@ -61,5 +61,5 @@ if (prob.status == LpStatusOptimal):
 else:
     print("0")
 
-for v in prob.variables():
-    print(v.name, "=", v.varValue)
+# for v in prob.variables():
+#     print(v.name, "=", v.varValue)
