@@ -12,28 +12,35 @@ prob = LpProblem("NatalBanal", LpMaximize)
 
 # get toys data 
 toys_info = {}
+toy_vars = {}
 for i in range(n_toys):
     profit, limit = map(int, input().split())
-    toys_info[i] = {PROFIT: profit, LIMIT: limit, RESTRICTION: []}
+    toy_vars[i] = LpVariable(f"toy_{i}", 0, cat=LpInteger)
+    toys_info[i] = {PROFIT: profit, LIMIT: limit, RESTRICTION: [toy_vars[i]]}
 
-toy_vars = LpVariable.dicts("toy", toys_info, 0, cat=LpInteger)
+# toy_vars = LpVariable.dicts("toy", toys_info, 0, cat=LpInteger)
 
-for toy in toy_vars:
-    toys_info[toy][RESTRICTION] += [toy_vars[toy]]
+# for toy in toy_vars:
+#     toys_info[toy][RESTRICTION] += [toy_vars[toy]]
 
 # now get packs data
 packs_info = {}
+pack_vars = {}
 for i in range(n_packs):
     toy1, toy2, toy3, profit = map(int, input().split())
     packs_info[i] = {CONTENT: (toy1-1, toy2-1, toy3-1), PROFIT: profit}
+    pack_vars[i] = LpVariable(f"pack_{i}", 0, cat=LpInteger)
+    # always O(1) because CONTENT of a pack is always 3 elements, a constant
+    for toy in packs_info[i][CONTENT]:
+        toys_info[toy][RESTRICTION] += [pack_vars[i]]
 
-pack_vars = LpVariable.dicts("pack", packs_info, 0, cat=LpInteger)
+# pack_vars = LpVariable.dicts("pack", packs_info, 0, cat=LpInteger)
 
 # add pack_vars to toy restrictions
-for pack in pack_vars:
-    # always O(1) because CONTENT of a pack is always 3 elements, a constant
-    for toy in packs_info[pack][CONTENT]: 
-        toys_info[toy][RESTRICTION] += [pack_vars[pack]]
+# for pack in pack_vars:
+#     # always O(1) because CONTENT of a pack is always 3 elements, a constant
+#     for toy in packs_info[pack][CONTENT]: 
+#         toys_info[toy][RESTRICTION] += [pack_vars[pack]]
 
 # restrictions
 for toy in toy_vars:
